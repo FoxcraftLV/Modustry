@@ -1,0 +1,2 @@
+> [!NOTE]
+> That's fine.
