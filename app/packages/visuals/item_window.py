@@ -4,10 +4,12 @@ from tkinter import filedialog
 from PIL import ImageTk, Image
 
 # Data modules
-from ..data.mindustry_class import Item, UnlockableContent
 from ..data.variables import item_list, UC_list, id_list
 from .global_func import choose_color
 
+# Mindustry class
+from ..data.mindustry_class.unlockableContent import UnlockableContent
+from ..data.mindustry_class.Item import Item
 
 def item_creator(root: Tk)->None:
     ##### Variables #####
