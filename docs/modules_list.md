@@ -10,7 +10,7 @@ __8. [Material Icon Theme][8]__
 __9. [Intellicode API Usage Examples][9]__  
 __10. [GitHub Markdown Preview][10]__  
 __11. [SQLite3 Editor][11]__  
-__12. [TODO Hightlight][12]__
+__12. [TODO Hightlight][12]__  
 __13. [debug-graph][13]__
 
 
