@@ -11,6 +11,7 @@ __9. [Intellicode API Usage Examples][9]__
 __10. [GitHub Markdown Preview][10]__  
 __11. [SQLite3 Editor][11]__  
 __12. [TODO Hightlight][12]__
+__13. [debug-graph][13]__
 
 
 [1]: https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner
@@ -25,3 +26,4 @@ __12. [TODO Hightlight][12]__
 [10]: https://marketplace.visualstudio.com/items?itemName=bierner.github-markdown-preview
 [11]: https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor
 [12]: https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight
+[13]: https://marketplace.visualstudio.com/items?itemName=k0in.debug-graph
