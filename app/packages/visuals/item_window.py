@@ -2,6 +2,7 @@
 from tkinter import *
 from tkinter import filedialog
 from PIL import ImageTk, Image
+import os
 
 # Data modules
 from ..data.variables import item_list, UC_list, id_list
@@ -45,10 +46,22 @@ def item_creator(root: Tk)->None:
     # fullIcon
     fullOverride = StringVar()
     
+    # Image loader
+    picture_path = filedialog.askopenfilename(title="Select your sprite (48x48 recommended)", filetypes=[("Image files", "*.png;*.jpg;*.jpeg")])
+    picture = ImageTk.PhotoImage(Image.open(picture_path).resize((256, 256), Image.NEAREST))
+    
     # Window
     window = Toplevel(root)
     window.title("Item Creator")
-    # window.iconbitmap("logo.ico")
+    try:
+        icon_path = os.path.join(os.path.dirname(__file__), "icons\\main_ico.ico")
+        if not os.path.isfile(icon_path):
+            raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
+    except:
+        user = os.getlogin()
+        icon_path = f"C:\\Users\\{user}\\AppData\\Roaming\\Modustry\\data\\icons\\main_icon.ico"
+    window.iconbitmap(icon_path)
+    window.iconbitmap("logo.ico")
     
     # Label frames
     UC_box = LabelFrame(window, text="Global Properties")
@@ -56,10 +69,6 @@ def item_creator(root: Tk)->None:
     
     item_box = LabelFrame(window, text="Item properties")
     item_box.grid(row=0, column=1)
-    
-    # Image loader
-    picture_path = filedialog.askopenfilename(title="Select your sprite (48x48 recommended)", filetypes=[("Image files", "*.png;*.jpg;*.jpeg")])
-    picture = ImageTk.PhotoImage(Image.open(picture_path).resize((256, 256), Image.NEAREST))
     
     picture_box = Label(window, image=picture)
     picture_box._strong_ref_image = picture
