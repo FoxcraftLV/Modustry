@@ -45,6 +45,10 @@ def item_creator(root: Tk)->None:
     # fullIcon
     fullOverride = StringVar()
     
+    # Image loader
+    picture_path = filedialog.askopenfilename(title="Select your sprite (48x48 recommended)", filetypes=[("Image files", "*.png;*.jpg;*.jpeg")])
+    picture = ImageTk.PhotoImage(Image.open(picture_path).resize((256, 256), Image.NEAREST))
+    
     # Window
     window = Toplevel(root)
     window.title("Item Creator")
@@ -56,10 +60,6 @@ def item_creator(root: Tk)->None:
     
     item_box = LabelFrame(window, text="Item properties")
     item_box.grid(row=0, column=1)
-    
-    # Image loader
-    picture_path = filedialog.askopenfilename(title="Select your sprite (48x48 recommended)", filetypes=[("Image files", "*.png;*.jpg;*.jpeg")])
-    picture = ImageTk.PhotoImage(Image.open(picture_path).resize((256, 256), Image.NEAREST))
     
     picture_box = Label(window, image=picture)
     picture_box._strong_ref_image = picture
