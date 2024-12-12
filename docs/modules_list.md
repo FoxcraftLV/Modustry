@@ -1,7 +1,7 @@
 ## Modules utiles au développement
 __1. [Code Runner][1]__  
 __2. [Color Highlight][2]__   
-__3. [Python Extension pack][3]__  
+__3. [Python Development Extensions Pack][3]__  
 __4. [Prettier][4]__  
 __5. [Tabnine][5]__  
 __6. [Hjson][6]__  
@@ -15,7 +15,7 @@ __12. [TODO Hightlight][12]__
 
 [1]: https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner
 [2]: https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight
-[3]: https://marketplace.visualstudio.com/items?itemName=donjayamanne.python-extension-pack
+[3]: https://marketplace.visualstudio.com/items?itemName=demystifying-javascript.python-extensions-pack
 [4]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 [5]: https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode
 [6]: https://marketplace.visualstudio.com/items?itemName=laktak.hjson
