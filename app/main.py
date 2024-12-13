@@ -12,14 +12,15 @@ root.geometry("640x360")
 root.title("Modustry")
 
 # some stuff for icon because else the software doen't work - don't ask me why
-try:
-    icon_path = os.path.join(os.path.dirname(__file__), "icons\\main_ico.ico")
-    if not os.path.isfile(icon_path):
-        raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
-except:
-    user = os.getlogin()
-    icon_path = f"C:\\Users\\{user}\\AppData\\Roaming\\Modustry\\data\\icons\\main_icon.ico"
-
+#try:
+#    icon_path = os.path.join(os.path.dirname(__file__), "icons\\main_ico.ico")
+#    if not os.path.isfile(icon_path):
+#        raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
+#except:
+#    user = os.getlogin()
+#    icon_path = f"C:\\Users\\{user}\\AppData\\Roaming\\Modustry\\data\\icons\\main_icon.ico"
+icon_path = os.path.join(os.path.dirname(__file__), "icons", "main_ico.ico")
+icon_path = os.path.normpath(icon_path)
 root.iconbitmap(default=icon_path)
 
 # Menu frame

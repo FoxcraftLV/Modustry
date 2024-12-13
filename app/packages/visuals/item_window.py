@@ -53,15 +53,19 @@ def item_creator(root: Tk)->None:
     # Window
     window = Toplevel(root)
     window.title("Item Creator")
-    try:
-        icon_path = os.path.join(os.path.dirname(__file__), "icons\\main_ico.ico")
-        if not os.path.isfile(icon_path):
-            raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
-    except:
-        user = os.getlogin()
-        icon_path = f"C:\\Users\\{user}\\AppData\\Roaming\\Modustry\\data\\icons\\main_icon.ico"
+    #try:
+    #   icon_path = os.path.join(os.path.dirname(__file__), "icons\\main_ico.ico")
+    #   if not os.path.isfile(icon_path):
+    #     raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
+    #except:
+    #   user = os.getlogin()
+    #   icon_path = f"C:\\Users\\{user}\\AppData\\Roaming\\Modustry\\data\\icons\\main_icon.ico"
+     
+    icon_path = os.path.join(os.path.dirname(__file__), "..", "..", "icons", "main_ico.ico")
+    icon_path = os.path.normpath(icon_path)
+    print(icon_path)
     window.iconbitmap(icon_path)
-    window.iconbitmap("logo.ico")
+    #window.iconbitmap("logo.ico")
     
     # Label frames
     UC_box = LabelFrame(window, text="Global Properties")
