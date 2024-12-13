@@ -2,6 +2,7 @@
 from tkinter import *
 from tkinter import filedialog
 from PIL import ImageTk, Image
+import os
 
 # Data modules
 from ..data.variables import item_list, UC_list, id_list
@@ -52,7 +53,15 @@ def item_creator(root: Tk)->None:
     # Window
     window = Toplevel(root)
     window.title("Item Creator")
-    # window.iconbitmap("logo.ico")
+    try:
+        icon_path = os.path.join(os.path.dirname(__file__), "icons\\main_ico.ico")
+        if not os.path.isfile(icon_path):
+            raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
+    except:
+        user = os.getlogin()
+        icon_path = f"C:\\Users\\{user}\\AppData\\Roaming\\Modustry\\data\\icons\\main_icon.ico"
+    window.iconbitmap(icon_path)
+    window.iconbitmap("logo.ico")
     
     # Label frames
     UC_box = LabelFrame(window, text="Global Properties")
