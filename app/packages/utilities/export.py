@@ -61,6 +61,9 @@ def mod_window(root):
     minGameVersion_Label.pack(side='left')
     minGameVersion_Entry.pack(side='left')
     
+
+    
+    
     # hidden
     hidden_Check = Checkbutton(window, text='is hidden', variable=hidden, offvalue="false", onvalue="true")
     hidden_Check.pack(side='top', anchor='n')
@@ -80,6 +83,10 @@ def pack_all(name, displayName, author, description, minGameVersion, hidden):
         create_folder(file_path)
         already_packed = True
     os.chdir(file_path)
+    
+    if(minGameVersion == ""):
+        minGameVersion = "136"
+        
     mod_text = f"""
     {{
         'name': '{name}',
@@ -108,7 +115,7 @@ def pack_all(name, displayName, author, description, minGameVersion, hidden):
     os.chdir(file_path)
 
 
-# creation o fhe mod structure for export
+# creation of fhe mod structure for export
 def create_folder(file_path):
     os.chdir(file_path)
     os.mkdir("bundles")

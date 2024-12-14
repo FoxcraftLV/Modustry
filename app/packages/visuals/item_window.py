@@ -178,10 +178,10 @@ def item_creator(root: Tk)->None:
             hardness.get(),
             cost.get(),
             healthScaling.get(),
+            lowPriority.get(),
             frames.get(),
             transitionFrames.get(),
             frameTime.get(),
-            lowPriority.get(),
             buildable.get(),
             hidden.get(),
             hiddenOnPlanets,
@@ -220,6 +220,10 @@ def create_item(master: Toplevel, localItem: Item, localContent: UnlockableConte
     master.destroy()
 
 def create_hjson_item_file(item: Item, unlockablecontent: UnlockableContent):
+    if unlockablecontent.fullOverride == "":
+        unlockablecontent.fullOverride = "true"
+    print(item.frameTime)
+
     hjson = f"""
     {{
         type: Item,
