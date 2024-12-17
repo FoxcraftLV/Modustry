@@ -1,8 +1,10 @@
 from __future__ import annotations
 from typing import Optional
 
+from .unlockableContent import UnlockableContent
+
 # for the liquids
-class Liquid:
+class Liquid(UnlockableContent):
     def __init__(self, name: str, image_path, color: hex, gasColor: hex, barColor: hex, lightColor: hex, flammability: float, explosiveness: float ,hidden: bool, canStayOn: list[Liquid] = None, blockReactive = True, coolant = True, moveThroughBlocks = False, incinerate = True, effect = "StatusEffects.none", particleEffect = "Fx.none", particleSpacing = 60.0, boilPoint = 2.0, capPuddles = True, vaporEffect = "Fx.vapor", temperature = 0.5, heatCapacity = 0.5, viscosity = 0.5, animationFrames = 50, animationScaleGas = 190.0, animationScaleLiquid = 230.0, gas = False):
         self.name = name
         self.image_path = image_path

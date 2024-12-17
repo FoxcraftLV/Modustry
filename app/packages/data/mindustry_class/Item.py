@@ -1,8 +1,15 @@
 from __future__ import annotations
 from typing import Optional
 
-class Item:
-    def __init__(self, name: str, color: hex, explosiveness: float, flammability: float, radioactivity: float, charge: float, hardness: int, cost: float, healthScaling: float, lowPriority: bool, frames: int, transitionFrames: int, frameTime: float, buildable: bool, hidden: bool, hiddenOnPlanets: list):
+from .unlockableContent import UnlockableContent
+
+class Item(UnlockableContent):
+    def __init__(self, name: str, color: hex, explosiveness: float, flammability: float, radioactivity: float, charge: float, hardness: int, cost: float, healthScaling: float,
+                        lowPriority: bool, frames: int, transitionFrames: int, frameTime: float, buildable: bool, hidden: bool, hiddenOnPlanets: list, localizedName: str, description: str,
+                        details: str, alwaysUnlocked: bool, inlineDescription: bool, hideDetails: bool, generateIcons: bool, iconId: int, selectionSize: float, fullOverride: str) -> None:
+        
+        super().__init__(localizedName, description, details, alwaysUnlocked, inlineDescription,
+                        hideDetails, generateIcons, iconId, selectionSize, fullOverride)
         self.name = name
         self.color = color
         self.explosiveness = explosiveness

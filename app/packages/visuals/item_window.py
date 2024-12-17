@@ -60,7 +60,7 @@ def item_creator(root: Tk)->None:
     #except:
     #   user = os.getlogin()
     #   icon_path = f"C:\\Users\\{user}\\AppData\\Roaming\\Modustry\\data\\icons\\main_icon.ico"
-     
+    
     icon_path = os.path.join(os.path.dirname(__file__), "..", "..", "icons", "main_ico.ico")
     icon_path = os.path.normpath(icon_path)
     print(icon_path)
@@ -169,75 +169,72 @@ def item_creator(root: Tk)->None:
     saveButton = Button(window, text="Save", command=lambda: create_item(
         window,
         Item(
-            name.get(),
-            color.get()[1:],
-            explosiveness.get(),
-            flammability.get(),
-            radioactivity.get(),
-            charge.get(),
-            hardness.get(),
-            cost.get(),
-            healthScaling.get(),
-            lowPriority.get(),
-            frames.get(),
-            transitionFrames.get(),
-            frameTime.get(),
-            buildable.get(),
-            hidden.get(),
-            hiddenOnPlanets,
-        ),
-        UnlockableContent(
-            localizedName.get(),
-            description_Text.get(index1='1.0', index2=END).strip(),
-            details.get(),
-            alwaysUnlocked.get(),
-            inlineDescription.get(),
-            hideDetails.get(),
-            generateIcons.get(),
-            iconId.get(),
-            selectionSize.get(),
-            fullOverride.get()
+            name=name.get(),
+            color=color.get()[1:],
+            explosiveness=explosiveness.get(),
+            flammability=flammability.get(),
+            radioactivity=radioactivity.get(),
+            charge=charge.get(),
+            hardness=hardness.get(),
+            cost=cost.get(),
+            healthScaling=healthScaling.get(),
+            lowPriority=lowPriority.get(),
+            frames=frames.get(),
+            transitionFrames=transitionFrames.get(),
+            frameTime=frameTime.get(),
+            buildable=buildable.get(),
+            hidden=hidden.get(),
+            hiddenOnPlanets=hiddenOnPlanets,
+            localizedName=localizedName.get(),
+            description=description_Text.get(index1='1.0', index2=END).strip(),
+            details=details.get(),
+            alwaysUnlocked=alwaysUnlocked.get(),
+            inlineDescription=inlineDescription.get(),
+            hideDetails=hideDetails.get(),
+            generateIcons=generateIcons.get(),
+            iconId=iconId.get(),
+            selectionSize=selectionSize.get(),
+            fullOverride=fullOverride.get()
         ),
         picture_path
-    ))
+        )
+    )
     saveButton.grid(row=1, column=0)
     
     # Show the window
     window.lift()
     window.pack_propagate()
 
-def create_item(master: Toplevel, localItem: Item, localContent: UnlockableContent, image_path)->None:
+def create_item(master: Toplevel, item: Item, image_path)->None:
     global item_list, UC_list, id_list
-    item_list.append(localItem)
-    UC_list.append(localContent)
+    item_list.append(item)
     # TODO: Make a better way to store id_list
-    id_list.append({'name': localItem.name, 'item_id': item_list.index(localItem), 'UC_id': UC_list.index(localContent), 'image_path': image_path})
+    id_list.append({'name': item.name, 'item_id': item_list.index(item), 'image_path': image_path})
     print(item_list)
-    print(UC_list)
     print(id_list)
     
     print("Item added successfully")
     master.destroy()
 
-def create_hjson_item_file(item: Item, unlockablecontent: UnlockableContent):
-    if unlockablecontent.fullOverride == "":
-        unlockablecontent.fullOverride = "true"
+def create_hjson_item_file(item: Item):
+    if item.fullOverride == "":
+        item.fullOverride = "true"
     print(item.frameTime)
 
     hjson = f"""
     {{
         type: Item,
         name: '{item.name}',
-        localizedName: '{unlockablecontent.localizedName}',
-        description: '{unlockablecontent.description}',
-        detail: '{unlockablecontent.details}',
-        alwaysUnlocked: {unlockablecontent.alwaysUnlocked},
-        inlineDescription: {unlockablecontent.inlineDescription},
-        hideDetails: {unlockablecontent.hideDetails},
-        generateIcons: {unlockablecontent.generateIcons},
-        iconId: {unlockablecontent.iconId},
-        selectionSize: {unlockablecontent.selectionSize},
-        fullOverride: {unlockablecontent.fullOverride},
+        localizedName: '{item.localizedName}',
+        description: '{item.description}',
+        detail: '{item.details}',
+        alwaysUnlocked: {item.alwaysUnlocked},
+        inlineDescription: {item.inlineDescription},
+        hideDetails: {item.hideDetails},
+        generateIcons: {item.generateIcons},
+        iconId: {item.iconId},
+        selectionSize: {item.selectionSize},
+        fullOverride: {item.fullOverride},
         color: '{item.color}',
         explosiveness: {item.explosiveness},
         flammability: {item.flammability},

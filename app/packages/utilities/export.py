@@ -83,10 +83,10 @@ def pack_all(name, displayName, author, description, minGameVersion, hidden):
         create_folder(file_path)
         already_packed = True
     os.chdir(file_path)
-    
+
     if(minGameVersion == ""):
         minGameVersion = "136"
-        
+
     mod_text = f"""
     {{
         'name': '{name}',
@@ -106,9 +106,9 @@ def pack_all(name, displayName, author, description, minGameVersion, hidden):
         for item in item_list:
             for id in id_list:
                 if item.name == id['name']:
-                    hjson = create_hjson_item_file(item, UC_list[id['UC_id']])
+                    hjson = create_hjson_item_file(item)
                     shutil.copy(id['image_path'],  os.path.join(file_path, "sprites/items"))
-                    with open(item.name + ".hjson", "w") as file:
+                    with open(f"{item.name}.hjson", "w") as file:
                         file.write(hjson)
 
         print("Items created successfully!")
