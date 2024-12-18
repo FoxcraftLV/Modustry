@@ -26,6 +26,9 @@ class Item(UnlockableContent):
         self.buildable = buildable
         self.hidden = hidden
         self.hiddenOnPlanets = hiddenOnPlanets
+    
+    def __str__(self) -> str:
+        return "Item"
 
 # for stacks specifically
 class ItemStack:

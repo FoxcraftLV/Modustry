@@ -1,3 +1,4 @@
+from tkinter import messagebox
 from .model import Model
 from .view import View
 
@@ -12,10 +13,24 @@ class Controller:
     
     def add_item(self):
         """Ajoute un nouvel objet"""
-        item_creator()
-        if type(item_list[-1])==Item:
-            self.model.add_item(item_list[-1])
+        def on_item_created(item, image_path):
+            self.model.add_item(item, image_path)
             self.view.update_list(self.model.get_items())
+        
+        item_creator(self.view.root, on_item_created)
     
     def edit_item(self):
         pass
+
+    def delete_item(self):
+        index = self.view.get_selected_index()
+        if index is not None:
+            if confirm := messagebox.askyesno(
+                "Delete this item ?", "Are you sure ?"
+            ):
+                self.model.remove_item(index)
+                self.view.update_list(self.model.get_items())
+    
+    def on_item_selected(self, index):
+        item = self.model.get_items()[index]
+        print(f"selected Item: {item.name} - {item}")

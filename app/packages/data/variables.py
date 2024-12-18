@@ -6,7 +6,6 @@ from .mindustry_class.Item import *
 from .mindustry_class.Liquid import *
 from .mindustry_class.unlockableContent import UnlockableContent
 
-
 # Main parameters
 UC_list: list[UnlockableContent] = []
 

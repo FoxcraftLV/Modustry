@@ -12,8 +12,10 @@ from .global_func import choose_color
 from ..data.mindustry_class.unlockableContent import UnlockableContent
 from ..data.mindustry_class.Item import Item
 
-def item_creator(root: Tk)->None:
+def item_creator(root: Tk, callback) -> None:
     ##### Variables #####
+    item_created = False
+    
     #TODO: Optimize var gestion
     name = StringVar()
     color = StringVar(value="#000000")
@@ -166,55 +168,60 @@ def item_creator(root: Tk)->None:
     hidden_Check = Checkbutton(check_box, text="Is hidden", variable=hidden, offvalue="false", onvalue="true")
     hidden_Check.grid(row=1, column=0)
     
-    saveButton = Button(window, text="Save", command=lambda: create_item(
-        window,
-        Item(
-            name=name.get(),
-            color=color.get()[1:],
-            explosiveness=explosiveness.get(),
-            flammability=flammability.get(),
-            radioactivity=radioactivity.get(),
-            charge=charge.get(),
-            hardness=hardness.get(),
-            cost=cost.get(),
-            healthScaling=healthScaling.get(),
-            lowPriority=lowPriority.get(),
-            frames=frames.get(),
-            transitionFrames=transitionFrames.get(),
-            frameTime=frameTime.get(),
-            buildable=buildable.get(),
-            hidden=hidden.get(),
-            hiddenOnPlanets=hiddenOnPlanets,
-            localizedName=localizedName.get(),
-            description=description_Text.get(index1='1.0', index2=END).strip(),
-            details=details.get(),
-            alwaysUnlocked=alwaysUnlocked.get(),
-            inlineDescription=inlineDescription.get(),
-            hideDetails=hideDetails.get(),
-            generateIcons=generateIcons.get(),
-            iconId=iconId.get(),
-            selectionSize=selectionSize.get(),
-            fullOverride=fullOverride.get()
-        ),
-        picture_path
-        )
-    )
+    def on_save():
+        nonlocal item_created
+        global item_list, UC_list, id_list
+        if not item_created:
+            item = Item(
+                        name=name.get(),
+                        color=color.get()[1:],
+                        explosiveness=explosiveness.get(),
+                        flammability=flammability.get(),
+                        radioactivity=radioactivity.get(),
+                        charge=charge.get(),
+                        hardness=hardness.get(),
+                        cost=cost.get(),
+                        healthScaling=healthScaling.get(),
+                        lowPriority=lowPriority.get(),
+                        frames=frames.get(),
+                        transitionFrames=transitionFrames.get(),
+                        frameTime=frameTime.get(),
+                        buildable=buildable.get(),
+                        hidden=hidden.get(),
+                        hiddenOnPlanets=hiddenOnPlanets,
+                        localizedName=localizedName.get(),
+                        description=description_Text.get(index1='1.0', index2=END).strip(),
+                        details=details.get(),
+                        alwaysUnlocked=alwaysUnlocked.get(),
+                        inlineDescription=inlineDescription.get(),
+                        hideDetails=hideDetails.get(),
+                        generateIcons=generateIcons.get(),
+                        iconId=iconId.get(),
+                        selectionSize=selectionSize.get(),
+                        fullOverride=fullOverride.get()
+                )
+            image_path = picture_path
+            item_created = True
+            # TODO: Make a better way to store id_list
+            window.destroy()
+            callback(item, image_path)
+    
+    saveButton = Button(window, text="Save", command=on_save)
     saveButton.grid(row=1, column=0)
     
     # Show the window
     window.lift()
     window.pack_propagate()
 
-def create_item(master: Toplevel, item: Item, image_path)->None:
-    global item_list, UC_list, id_list
-    item_list.append(item)
-    # TODO: Make a better way to store id_list
-    id_list.append({'name': item.name, 'item_id': item_list.index(item), 'image_path': image_path})
-    print(item_list)
-    print(id_list)
-    
-    print("Item added successfully")
-    master.destroy()
+# def create_item(master: Toplevel, item: Item, image_path)->None:
+#     global item_list, UC_list, id_list
+#     item_list.append(item)
+#     # TODO: Make a better way to store id_list
+#     id_list.append({'name': item.name, 'item_id': item_list.index(item), 'image_path': image_path})
+#     print(item_list)
+#     print(id_list)
+#     print("Item added successfully")
+#     master.destroy()
 
 def create_hjson_item_file(item: Item):
     if item.fullOverride == "":
