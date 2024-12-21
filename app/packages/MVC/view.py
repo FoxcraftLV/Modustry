@@ -37,7 +37,9 @@ class View:
         except Exception:
             user = os.getlogin()
             icon_path = f"C:\\Users\\{user}\\AppData\\Roaming\\Modustry\\data\\icons\\main_icon.ico"
-        self.root.iconbitmap(default=icon_path)
+        #self.root.iconbitmap(default=icon_path)
+        self.root.after(250, lambda: self.root.iconbitmap(icon_path))
+
 
         # Menu frame
         root_bar = tk.Menu(self.root,font=CTkFont(size = 16))

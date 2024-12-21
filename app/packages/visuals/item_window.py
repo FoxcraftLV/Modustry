@@ -76,7 +76,9 @@ def item_creator(root: Tk, callback) -> None:
     icon_path = os.path.join(os.path.dirname(__file__), "..", "..", "icons", "main_ico.ico")
     icon_path = os.path.normpath(icon_path)
 
-    window.iconbitmap(icon_path)
+    #window.iconbitmap(icon_path)
+
+    window.after(250, lambda: window.iconbitmap(icon_path))
     
     # Label frames
     UC_box = LabelFrame(window, text="Global Properties", bg=dark_color_1,fg = whiteColor,font=CTkFont(size = 28))
