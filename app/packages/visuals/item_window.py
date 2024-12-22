@@ -7,7 +7,7 @@ from customtkinter import *
 
 
 # Data modules
-from ..data.variables import item_list, UC_list, id_list
+from ..data.variables import id_list
 from .global_func import choose_color
 
 # Mindustry class
@@ -25,10 +25,6 @@ def item_creator(root: Tk, callback) -> None:
     hover_color = "#1f4676"
     dark_blue_color = "#2c63aa"
     whiteColor= '#eeeeee'
-
-
-
-
     
     #TODO: Optimize var gestion
     name = StringVar()
@@ -61,7 +57,6 @@ def item_creator(root: Tk, callback) -> None:
     # uiIcon
     # fullIcon
     fullOverride = StringVar()
-    
     # Image loader
     picture_path = filedialog.askopenfilename(title="Select your sprite (48x48 recommended)", filetypes=[("Image files", "*.png;*.jpg;*.jpeg")])
     picture = ImageTk.PhotoImage(Image.open(picture_path).resize((256, 256), Image.NEAREST))
@@ -134,13 +129,13 @@ def item_creator(root: Tk, callback) -> None:
     #"Size of the content (%)"
     selectionSize_Scale = Scale(UC_box, label="Size of the content (%)", from_=0, to=100, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=selectionSize,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
     selectionSize_Scale.pack(side=TOP, pady=10)
-   
+    
     
     
     ### Item parameters #####
-    color_Button = CTkButton(item_box, text="Choose the color", command=lambda: color.set((choose_color(window, color_Button)))
-                             , height=30, fg_color=light_blue_color,hover_color=dark_blue_color,text_color=dark_color_1,
-                               font=CTkFont(size = 18))
+    color_Button = CTkButton(item_box, text="Choose the color", command=lambda: color.set((choose_color(window, color_Button))),
+                            height=30, fg_color=light_blue_color,hover_color=dark_blue_color,text_color=dark_color_1,
+                            font=CTkFont(size = 18))
     color_Button.pack(side=TOP, pady=10)
     
     scale_box = LabelFrame(item_box, bg = dark_color_1)
@@ -189,7 +184,6 @@ def item_creator(root: Tk, callback) -> None:
     
     def on_save():
         nonlocal item_created
-        global item_list, UC_list, id_list
         if not item_created:
             item = Item(
                         name=name.get(),
@@ -233,20 +227,6 @@ def item_creator(root: Tk, callback) -> None:
     # Show the window
     window.lift()
     window.pack_propagate()
-
-
-
-
-
-# def create_item(master: Toplevel, item: Item, image_path)->None:
-#     global item_list, UC_list, id_list
-#     item_list.append(item)
-#     # TODO: Make a better way to store id_list
-#     id_list.append({'name': item.name, 'item_id': item_list.index(item), 'image_path': image_path})
-#     print(item_list)
-#     print(id_list)
-#     print("Item added successfully")
-#     master.destroy()
 
 def create_hjson_item_file(item: Item):
     if item.fullOverride == "":

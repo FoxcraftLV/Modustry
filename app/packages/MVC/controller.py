@@ -2,6 +2,7 @@ from tkinter import messagebox
 from .model import Model
 from .view import View
 
+from ..visuals.global_func import get_index_by_parameter
 from ..visuals.item_window import item_creator
 from ..data.variables import *
 
@@ -10,6 +11,8 @@ class Controller:
     def __init__(self, root):
         self.model = Model()
         self.view = View(root, self)
+        
+        self.selected_item = None
     
     def add_item(self):
         """Ajoute un nouvel objet"""
@@ -18,9 +21,6 @@ class Controller:
             self.view.update_list(self.model.get_items())
         
         item_creator(self.view.root, on_item_created)
-    
-    def edit_item(self):
-        pass
 
     def delete_item(self):
         index = self.view.get_selected_index()
@@ -33,4 +33,5 @@ class Controller:
     
     def on_item_selected(self, index):
         item = self.model.get_items()[index]
+        self.selected_item = item
         print(f"selected Item: {item.name} - {item}")

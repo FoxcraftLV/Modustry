@@ -24,6 +24,7 @@ class View:
 
         self.root.title("Modustry")
         self.root.state("zoomed")
+        self.root.geometry("640x480")
         self.root.resizable(False, False)
         set_appearance_mode('dark')
 
@@ -60,7 +61,7 @@ class View:
         self.root.config(menu=root_bar)
 
         self.main_frame = CTkFrame(self.root)
-        self.main_frame.pack(padx=10, pady=10)
+        self.main_frame.pack(padx=10, pady=10, fill="both", expand=True)
 
         self.items_frame = CTkFrame(self.main_frame, fg_color=self.dark_color_1, border_color= self.whiteColor,border_width=2)
         self.items_frame.pack(side="left")
@@ -69,27 +70,22 @@ class View:
         self.items_label.pack(side="top", pady=5)
 
         ##### liste des items #####
-        self.item_listbox = tk.Listbox(self.items_frame, width=40, height=40, bg=self.dark_color_1, highlightbackground= self.dark_color_1)
+        self.item_listbox = tk.Listbox(self.items_frame, width=40, height=40, bg=self.dark_color_1, fg=self.whiteColor, highlightbackground= self.dark_color_1)
         self.item_listbox.pack(side=tk.LEFT, padx=10, pady=10)
         self.item_listbox.bind("<<ListboxSelect>>", self.on_item_select)
 
         # Boutons
         self.buttons_frame = CTkFrame(self.main_frame, fg_color=self.dark_color_1, border_color= self.whiteColor,border_width=2)
-        self.buttons_frame.pack(side="right", ipadx=20, padx = 20)
+        self.buttons_frame.pack(side="left", ipadx=20, padx = 20)
 
         self.add_button = CTkButton(self.buttons_frame, text="Add Item", command=self.controller.add_item,
                                     width= 120, height=40, fg_color=self.light_blue_color, hover_color=self.dark_blue_color,
                                     text_color=self.dark_color_1, font=CTkFont(size = 18))
         self.add_button.pack(pady=10)
 
-        self.edit_button = CTkButton(self.buttons_frame, text="Edit Item", command=self.controller.edit_item,
-                                     width= 120, height=40, fg_color=self.light_blue_color, hover_color=self.dark_blue_color,
-                                    text_color=self.dark_color_1, font=CTkFont(size = 18))
-        self.edit_button.pack(pady=10)
-
         self.delete_button = CTkButton(self.buttons_frame, text="Delete Item", command=self.controller.delete_item,
-                                       width= 120, height=40, fg_color=self.light_blue_color, hover_color=self.dark_blue_color,
-                                        text_color=self.dark_color_1, font=CTkFont(size = 18))
+                                    width= 120, height=40, fg_color=self.light_blue_color, hover_color=self.dark_blue_color,
+                                    text_color=self.dark_color_1, font=CTkFont(size = 18))
         self.delete_button.pack(pady=10)
 
 
