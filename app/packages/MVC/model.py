@@ -1,6 +1,6 @@
 from ..data.mindustry_class.Item import Item
-from ..data.variables import item_list, id_list
-from..visuals.global_func import get_index_by_parameter
+from ..data.mindustry_class.Liquid import Liquid
+from ..data.variables import item_list, liquid_list, id_list
 
 class Model:
     """Gestionnaire des objets"""
@@ -21,3 +21,19 @@ class Model:
     def get_items(self) -> list:
         """Retourne la liste des items."""
         return item_list
+    
+    
+    ##### Liquid gestion #####
+    def add_liquid(self, liquid: Liquid, image_path: str) -> None:
+        """Ajoute un nouvel item"""
+        liquid_list.append(liquid)
+        id_list.append({'name': liquid.name, 'item_id': liquid_list.index(liquid), 'image_path': image_path})
+
+    def remove_liquid(self, index) -> None:
+        """Supprime un item"""
+        if 0 <= index < len(liquid_list):
+            del liquid_list[index]
+    
+    def get_liquids(self) -> list:
+        """Retourne la liste des items."""
+        return liquid_list

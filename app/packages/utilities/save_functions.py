@@ -12,6 +12,8 @@ def save_file():
         with open(file_path, "wb") as file:
             dump(item_list, file)
             # print("items sauvegardés")
+            dump(liquid_list, file)
+            # print("liquides sauvegardés")
             dump(UC_list, file)
             # print("content sauv")
             dump(already_packed, file)
@@ -23,12 +25,13 @@ def save_file():
         print("Mod saved successfully!")
 
 # load method 
-def load_file():
+def load_file(callback: Optional[callable] = None):
     global already_packed
     file_path = filedialog.askopenfilename(filetypes=[("Mindustry Mod", "*.modtry"), ("Mindustry Mod", "*.minmod"), ("All Files", "*.*")])
     if file_path:
         with open(file_path, "rb") as file:
             loaded_item_list: list[Item] = load(file)
+            loaded_liquid_list: list[Liquid] = load(file)
             loaded_UC_list: list[UnlockableContent] = load(file)
             loaded_already_packed: bool = load(file)
             loaded_id_list: list[dict] = load(file)
@@ -36,6 +39,9 @@ def load_file():
         
         item_list.clear()
         item_list.extend(loaded_item_list)
+        
+        liquid_list.clear()
+        liquid_list.extend(loaded_liquid_list)
         
         UC_list.clear()
         UC_list.extend(loaded_UC_list)
@@ -46,7 +52,8 @@ def load_file():
         id_list.extend(loaded_id_list)
         
         print("Mod loaded successfully!")
-        return True
+        
+        callback() if callback else None
     else:
         print("no file was chosen")
 
