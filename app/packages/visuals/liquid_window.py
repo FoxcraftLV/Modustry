@@ -88,14 +88,14 @@ def liquid_creator(root: Tk, callback) -> None:
     
     # Label frames
     UC_box = LabelFrame(window, text="Global Properties", bg=dark_color_1,fg = whiteColor,font=CTkFont(size = 28))
-    UC_box.grid(row=0, column=0, padx=10,pady=20)
+    UC_box.grid(row=0, column=0, padx=10,pady=10)
     
-    liquid_box = LabelFrame(window, text="liquid properties", bg=dark_color_1,fg = whiteColor,font=CTkFont(size = 28))
-    liquid_box.grid(row=0, column=1, padx=10,pady=20)
+    liquid_box = LabelFrame(window, text="Liquid Properties", bg=dark_color_1,fg = whiteColor,font=CTkFont(size = 28))
+    liquid_box.grid(row=0, column=1, padx=10,pady=10)
     
     picture_box = Label(window, image=picture)
     picture_box._strong_ref_image = picture
-    picture_box.grid(row=0, column=2, padx=10,pady=20)
+    picture_box.grid(row=0, column=2, padx=10,pady=10)
     
     ##### Unlockable Content parameters #####
     name_box = LabelFrame(UC_box,bg = dark_color_1,font=CTkFont(size = 16))
@@ -107,7 +107,7 @@ def liquid_creator(root: Tk, callback) -> None:
     
     
     description_box = LabelFrame(UC_box,bg = dark_color_1)
-    description_box.pack(side=TOP, pady=5)
+    description_box.pack(side=TOP)
     description_Label = Label(description_box, text="Main description: ",bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18))
     description_Text = Text(description_box, height=5, width=20,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),insertbackground=whiteColor)
     description_Label.pack(side=LEFT)
@@ -116,112 +116,112 @@ def liquid_creator(root: Tk, callback) -> None:
     #description_Scrollbar.pack(side=LEFT)
     
     localizedName_box = LabelFrame(UC_box,bg = dark_color_1)
-    localizedName_box.pack(side=TOP, pady=5, padx=5)
+    localizedName_box.pack(side=TOP, pady=10, padx=5)
     localizedName_Label = Label(localizedName_box, text="Name in-game",bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18))
     localizedName_Entry = Entry(localizedName_box, textvariable=localizedName,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),insertbackground=whiteColor)
-    localizedName_Label.pack(side=LEFT, pady=5)
-    localizedName_Entry.pack(side=LEFT, padx=5)
+    localizedName_Label.pack(side=LEFT)
+    localizedName_Entry.pack(side=LEFT, padx=5, pady=5)
     
     alwaysUnlocked_Check = CTkCheckBox(UC_box, text="Unlocked in tech tree", variable=alwaysUnlocked, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    alwaysUnlocked_Check.pack(side=TOP)
+    alwaysUnlocked_Check.pack(side=TOP,padx=50, anchor="w")
     
     inlineDescription_Check = CTkCheckBox(UC_box, text="Description in Tech Tree", variable=inlineDescription, fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    inlineDescription_Check.pack(side=TOP)
+    inlineDescription_Check.pack(side=TOP,padx=50, anchor="w")
     
     hideDetails_Check = CTkCheckBox(UC_box, text="Hide details in custom games", variable=hideDetails, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    hideDetails_Check.pack(side=TOP)
+    hideDetails_Check.pack(side=TOP,padx=50, anchor="w")
     
     generateIcons_Check = CTkCheckBox(UC_box, text="Have an icon", variable=generateIcons, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    generateIcons_Check.pack(side=TOP)
+    generateIcons_Check.pack(side=TOP,padx=50, anchor="w")
+
     
-    #"Size of the content (%)"
     selectionSize_Scale = Scale(UC_box, label="Size of the content (%)", from_=0, to=100, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=selectionSize,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
     selectionSize_Scale.pack(side=TOP, pady=10)
     
     
     ### Liquid parameters #####
     button_Frame = LabelFrame(liquid_box,bg = dark_color_1)
-    button_Frame.grid(row=0, column=0, padx=10,pady=20)
+    button_Frame.grid(row=0, column=0, padx=10,pady=5)
     
     color_Button = CTkButton(button_Frame, text="Choose the color", command=lambda: color.set((choose_color(window, color_Button))),
-                            height=30, fg_color=light_blue_color,hover_color=dark_blue_color,text_color=dark_color_1,
+                            width=200, height=30, fg_color=light_blue_color,hover_color=dark_blue_color,text_color=dark_color_1,
                             font=CTkFont(size = 18))
-    color_Button.grid(row=0, column=0, pady=10)
+    color_Button.grid(row=0, column=0, pady=5, padx=5)
     
     gasColor_Button = CTkButton(button_Frame, text="Choose the gas color", command=lambda: gasColor.set((choose_color(window, gasColor_Button))),
-                            height=30, fg_color=light_blue_color,hover_color=dark_blue_color,text_color=dark_color_1,
+                            width=200, height=30, fg_color=light_blue_color,hover_color=dark_blue_color,text_color=dark_color_1,
                             font=CTkFont(size = 18))
-    gasColor_Button.grid(row=0, column=1, pady=10)
+    gasColor_Button.grid(row=0, column=1, pady=5, padx=(0,5))
     
     barColor_Button = CTkButton(button_Frame, text="Choose the bar color", command=lambda: barColor.set((choose_color(window, barColor_Button))),
-                            height=30, fg_color=light_blue_color,hover_color=dark_blue_color,text_color=dark_color_1,
+                            width=200, height=30, fg_color=light_blue_color,hover_color=dark_blue_color,text_color=dark_color_1,
                             font=CTkFont(size = 18))
-    barColor_Button.grid(row=1, column=0, pady=10)
+    barColor_Button.grid(row=1, column=0, pady=(0,5), padx=5)
     
     lightColor_Button = CTkButton(button_Frame, text="Choose the light color", command=lambda: lightColor.set((choose_color(window, lightColor_Button))),
-                            height=30, fg_color=light_blue_color,hover_color=dark_blue_color,text_color=dark_color_1,
+                            width=200, height=30, fg_color=light_blue_color,hover_color=dark_blue_color,text_color=dark_color_1,
                             font=CTkFont(size = 18))
-    lightColor_Button.grid(row=1, column=1, pady=10)
+    lightColor_Button.grid(row=1, column=1, pady=(0,5), padx=(0,5))
     
     scale_box = LabelFrame(liquid_box, bg = dark_color_1)
     scale_box.grid(row=1, column=0, padx=10,pady=20)
     
     flammability_Scale = Scale(scale_box, label="Flammability", from_=0, to=100, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=flammability,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    flammability_Scale.grid(row=0, column=0, pady=10)
+    flammability_Scale.grid(row=0, column=0, padx=(10,5),pady=(10,5))
     
     explosiveness_Scale = Scale(scale_box, label="Explosiveness", from_=0, to=100, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=explosiveness,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    explosiveness_Scale.grid(row=0, column=1, pady=10)
+    explosiveness_Scale.grid(row=0, column=1, padx=(5,10),pady=(10,5))
     
     particleSpacing_Scale = Scale(scale_box, label="Particle spacing", from_=0, to=100, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=particleSpacing,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    particleSpacing_Scale.grid(row=1, column=0, pady=10)
+    particleSpacing_Scale.grid(row=1, column=0, padx=(10,5),pady=5)
     
     boilPoint_Scale = Scale(scale_box, label="Boil point", from_=0, to=100, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=boilPoint,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    boilPoint_Scale.grid(row=1, column=1, pady=10)
+    boilPoint_Scale.grid(row=1, column=1, padx=(5,10),pady=5)
     
     temperature_Scale = Scale(scale_box, label="Temperature", from_=0, to=100, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=temperature,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    temperature_Scale.grid(row=2, column=0, pady=10)
+    temperature_Scale.grid(row=2, column=0, padx=(10,5),pady=5)
     
     heatCapacity_Scale = Scale(scale_box, label="Heat capacity", from_=0, to=100, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=heatCapacity,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    heatCapacity_Scale.grid(row=2, column=1, pady=10)
+    heatCapacity_Scale.grid(row=2, column=1, padx=(5,10),pady=5)
     
     viscosity_Scale = Scale(scale_box, label="Viscosity", from_=0, to=100, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=viscosity,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    viscosity_Scale.grid(row=3, column=0, pady=10)
+    viscosity_Scale.grid(row=3, column=0, padx=(10,5),pady=5)
     
     animationFrames_Scale = Scale(scale_box, label="Animation frames", from_=0, to=100, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=animationFrames,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    animationFrames_Scale.grid(row=3, column=1, pady=10)
+    animationFrames_Scale.grid(row=3, column=1, padx=(5,10),pady=5)
     
     animationScaleGas_Scale = Scale(scale_box, label="Animation scale gas", from_=0, to=100, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=animationScaleGas,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    animationScaleGas_Scale.grid(row=4, column=0, pady=10)
+    animationScaleGas_Scale.grid(row=4, column=0, padx=(10,5),pady=(5,10))
     
     animationScaleLiquid_Scale = Scale(scale_box, label="Animation scale liquid", from_=0, to=100, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=animationScaleLiquid,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    animationScaleLiquid_Scale.grid(row=4, column=1, pady=10)
+    animationScaleLiquid_Scale.grid(row=4, column=1, padx=(5,10),pady=(5,10))
     
     
     #TODO: hiddenOnPlanets
     
     check_box = LabelFrame(liquid_box,bg = dark_color_1)
-    check_box.grid(row=0, column=1, padx=10,pady=20)
+    check_box.grid(row=0, column=1, padx=10,pady=5)
     
     hidden_Check = CTkCheckBox(check_box, text="Hidden", variable=hidden, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    hidden_Check.pack(side=TOP)
+    hidden_Check.pack(side=TOP,padx=10, anchor="w")
     
     blockReactive_Check = CTkCheckBox(check_box, text="Block reactive", variable=blockReactive, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    blockReactive_Check.pack(side=TOP)
+    blockReactive_Check.pack(side=TOP,padx=10, anchor="w")
     
     coolant_Check = CTkCheckBox(check_box, text="Coolant", variable=coolant, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    coolant_Check.pack(side=TOP)
+    coolant_Check.pack(side=TOP,padx=10, anchor="w")
     
     moveThroughBlocks_Check = CTkCheckBox(check_box, text="Move through blocks", variable=moveThroughBlocks, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    moveThroughBlocks_Check.pack(side=TOP)
+    moveThroughBlocks_Check.pack(side=TOP,padx=10, anchor="w")
     
     incinerate_Check = CTkCheckBox(check_box, text="Incinerate", variable=incinerate, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    incinerate_Check.pack(side=TOP)
+    incinerate_Check.pack(side=TOP,padx=10, anchor="w")
     
     capPuddles_Check = CTkCheckBox(check_box, text="Cap puddles", variable=capPuddles, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    capPuddles_Check.pack(side=TOP)
+    capPuddles_Check.pack(side=TOP,padx=10, anchor="w")
     
     gas_Check = CTkCheckBox(check_box, text="Gas", variable=gas, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    gas_Check.pack(side=TOP)
+    gas_Check.pack(side=TOP,padx=10, anchor="w")
     
     def on_save():
         nonlocal liquid_created
@@ -273,7 +273,7 @@ def liquid_creator(root: Tk, callback) -> None:
     
     saveButton = CTkButton(window, text="Save", command=on_save, width = 100, height=40, fg_color=light_blue_color,
                             hover_color=dark_blue_color,text_color=dark_color_1, font=CTkFont(size = 24))
-    saveButton.grid(row=1, column=0, pady=20, padx=20)
+    saveButton.grid(row=1, column=0, pady=(0, 20))
 
     
     # Show the window

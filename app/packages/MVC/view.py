@@ -82,12 +82,12 @@ class View:
         self.add_item_button = CTkButton(self.buttons_frame, text="Add Item", command=self.controller.add_item,
                                     width= 120, height=40, fg_color=self.light_blue_color, hover_color=self.dark_blue_color,
                                     text_color=self.dark_color_1, font=CTkFont(size = 18))
-        self.add_item_button.pack(pady=10)
+        self.add_item_button.pack(pady=(10,0))
 
         self.delete_item_button = CTkButton(self.buttons_frame, text="Delete Item", command=self.controller.delete_item,
                                     width= 120, height=40, fg_color=self.light_blue_color, hover_color=self.dark_blue_color,
                                     text_color=self.dark_color_1, font=CTkFont(size = 18))
-        self.delete_item_button.pack(pady=10)
+        self.delete_item_button.pack(pady=(10,10))
         
         ##### Liste des liquides #####
         self.liquids_frame = CTkFrame(self.main_frame, fg_color=self.dark_color_1, border_color= self.whiteColor,border_width=2)
@@ -103,7 +103,7 @@ class View:
         self.add_liquid_button = CTkButton(self.buttons_frame, text="Add Liquid", command=self.controller.add_liquid,
                                     width= 120, height=40, fg_color=self.light_blue_color, hover_color=self.dark_blue_color,
                                     text_color=self.dark_color_1, font=CTkFont(size = 18))
-        self.add_liquid_button.pack(pady=10)
+        self.add_liquid_button.pack(pady=(10,0))
         
         self.delete_liquid_button = CTkButton(self.buttons_frame, text="Delete Liquid", command=self.controller.delete_liquid,
                                     width= 120, height=40, fg_color=self.light_blue_color, hover_color=self.dark_blue_color,

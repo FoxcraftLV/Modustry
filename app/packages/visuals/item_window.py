@@ -77,14 +77,14 @@ def item_creator(root: Tk, callback) -> None:
     
     # Label frames
     UC_box = LabelFrame(window, text="Global Properties", bg=dark_color_1,fg = whiteColor,font=CTkFont(size = 28))
-    UC_box.grid(row=0, column=0, padx=10,pady=20)
+    UC_box.grid(row=0, column=0, padx=10,pady=10)
     
     item_box = LabelFrame(window, text="Item properties", bg=dark_color_1,fg = whiteColor,font=CTkFont(size = 28))
-    item_box.grid(row=0, column=1, padx=10,pady=20)
+    item_box.grid(row=0, column=1, padx=10,pady=10)
     
     picture_box = Label(window, image=picture)
     picture_box._strong_ref_image = picture
-    picture_box.grid(row=0, column=2, padx=10,pady=20)
+    picture_box.grid(row=0, column=2, padx=10,pady=10)
     
     ##### Unlockable Content parameters #####
     name_box = LabelFrame(UC_box,bg = dark_color_1,font=CTkFont(size = 16))
@@ -96,7 +96,7 @@ def item_creator(root: Tk, callback) -> None:
     
     
     description_box = LabelFrame(UC_box,bg = dark_color_1)
-    description_box.pack(side=TOP, pady=5)
+    description_box.pack(side=TOP)
     description_Label = Label(description_box, text="Main description: ",bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18))
     description_Text = Text(description_box, height=5, width=20,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),insertbackground=whiteColor)
     description_Label.pack(side=LEFT)
@@ -105,28 +105,25 @@ def item_creator(root: Tk, callback) -> None:
     #description_Scrollbar.pack(side=LEFT)
     
     localizedName_box = LabelFrame(UC_box,bg = dark_color_1)
-    localizedName_box.pack(side=TOP, pady=5, padx=5)
+    localizedName_box.pack(side=TOP, pady=10, padx=5)
     localizedName_Label = Label(localizedName_box, text="Name in-game",bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18))
     localizedName_Entry = Entry(localizedName_box, textvariable=localizedName,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),insertbackground=whiteColor)
-    localizedName_Label.pack(side=LEFT, pady=5)
-    localizedName_Entry.pack(side=LEFT, padx=5)
+    localizedName_Label.pack(side=LEFT)
+    localizedName_Entry.pack(side=LEFT, padx=5, pady=5)
     
     alwaysUnlocked_Check = CTkCheckBox(UC_box, text="Unlocked in tech tree", variable=alwaysUnlocked, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    alwaysUnlocked_Check.pack(side=TOP)
+    alwaysUnlocked_Check.pack(side=TOP,padx=50, anchor="w")
     
     inlineDescription_Check = CTkCheckBox(UC_box, text="Description in Tech Tree", variable=inlineDescription, fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    inlineDescription_Check.pack(side=TOP)
+    inlineDescription_Check.pack(side=TOP,padx=50, anchor="w")
     
     hideDetails_Check = CTkCheckBox(UC_box, text="Hide details in custom games", variable=hideDetails, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    hideDetails_Check.pack(side=TOP)
+    hideDetails_Check.pack(side=TOP,padx=50, anchor="w")
     
     generateIcons_Check = CTkCheckBox(UC_box, text="Have an icon", variable=generateIcons, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    generateIcons_Check.pack(side=TOP)
+    generateIcons_Check.pack(side=TOP,padx=50, anchor="w")
     
 
-
-    
-    #"Size of the content (%)"
     selectionSize_Scale = Scale(UC_box, label="Size of the content (%)", from_=0, to=100, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=selectionSize,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
     selectionSize_Scale.pack(side=TOP, pady=10)
     
@@ -139,48 +136,48 @@ def item_creator(root: Tk, callback) -> None:
     color_Button.pack(side=TOP, pady=10)
     
     scale_box = LabelFrame(item_box, bg = dark_color_1)
-    scale_box.pack(side=TOP)
+    scale_box.pack(side=TOP, padx=10)
     
     explosiveness_Scale = Scale(scale_box, label="Explosiveness", from_=0, to=10, tickinterval=5, resolution=0.1, orient=HORIZONTAL, sliderlength=30, variable=explosiveness,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    explosiveness_Scale.grid(row=0, column=0, padx=2,pady=2)
+    explosiveness_Scale.grid(row=0, column=0, padx=(10,5),pady=(10,5))
     
     flammability_Scale = Scale(scale_box, label="Flammability", from_=0, to=10, tickinterval=5, resolution=0.1, orient=HORIZONTAL, sliderlength=30, variable=flammability,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    flammability_Scale.grid(row=0, column=1, padx=2,pady=2)
+    flammability_Scale.grid(row=0, column=1, padx=(5,10),pady=(10,5))
     
     radioactivity_Scale = Scale(scale_box, label="Radioactivity", from_=0, to=10, tickinterval=5, resolution=0.1, orient=HORIZONTAL, sliderlength=30, variable=radioactivity,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    radioactivity_Scale.grid(row=1, column=0, padx=2,pady=2)
+    radioactivity_Scale.grid(row=1, column=0, padx=(10,5),pady=5)
     
     charge_Scale = Scale(scale_box, label="Charge", from_=0, to=10, tickinterval=5, resolution=0.1, orient=HORIZONTAL, sliderlength=30, variable=charge,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    charge_Scale.grid(row=1, column=1, padx=2,pady=2)
+    charge_Scale.grid(row=1, column=1, padx=(5,10),pady=5)
     
     hardness_Scale = Scale(scale_box, label="Hardness", from_=0, to=10, tickinterval=5, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=hardness,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    hardness_Scale.grid(row=2, column=0, padx=2,pady=2)
+    hardness_Scale.grid(row=2, column=0, padx=(10,5),pady=5)
     
     cost_Scale = Scale(scale_box, label="Cost", from_=0, to=10, tickinterval=5, resolution=0.1, orient=HORIZONTAL, sliderlength=30, variable=cost,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    cost_Scale.grid(row=2, column=1, padx=2,pady=2)
+    cost_Scale.grid(row=2, column=1, padx=(5,10),pady=5)
     
     healthScaling_Scale = Scale(scale_box, label="Health Scaling", from_=0, to=10, tickinterval=5, resolution=0.1, orient=HORIZONTAL, sliderlength=30, variable=healthScaling,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    healthScaling_Scale.grid(row=3, column=0, padx=2,pady=2)
+    healthScaling_Scale.grid(row=3, column=0, padx=(10,5),pady=5)
     
     frames_Scale = Scale(scale_box, label="Frames", from_=0, to=60, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=frames,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    frames_Scale.grid(row=3, column=1, padx=2,pady=2)
+    frames_Scale.grid(row=3, column=1, padx=(5,10),pady=5)
     
     transitionFrames_Scale = Scale(scale_box, label="Transition frames", from_=0, to=60, tickinterval=25, resolution=1, orient=HORIZONTAL, sliderlength=30, variable=transitionFrames,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    transitionFrames_Scale.grid(row=4, column=0, padx=2,pady=2)
+    transitionFrames_Scale.grid(row=4, column=0, padx=(10,5),pady=(5,10))
     
     frameTime_Scale = Scale(scale_box, label="Frame time", from_=0, to=10, tickinterval=5, resolution=0.1, orient=HORIZONTAL, sliderlength=30, variable=frameTime,bg = dark_color_1,fg = whiteColor,font=CTkFont(size = 18),length=200)
-    frameTime_Scale.grid(row=4, column=1, padx=2,pady=2)
+    frameTime_Scale.grid(row=4, column=1, padx=(5,10),pady=(5,10))
     
     #TODO: hiddenOnPlanets
     
     check_box = LabelFrame(item_box,bg = dark_color_1)
     check_box.pack(side=TOP, pady=10)
     lowPriority_Check = CTkCheckBox(check_box, text="Low Priority", variable=lowPriority, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    lowPriority_Check.grid(row=0, column=0, padx=5)
+    lowPriority_Check.grid(row=0, column=0, padx=5, sticky="w")
     buildable_Check = CTkCheckBox(check_box, text="Is buildable", variable=buildable, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    buildable_Check.grid(row=0, column=1, padx=5)
+    buildable_Check.grid(row=0, column=1, padx=5, sticky="w")
     hidden_Check = CTkCheckBox(check_box, text="Is hidden", variable=hidden, offvalue="false", onvalue="true", fg_color= dark_blue_color,bg_color = dark_color_1,text_color = whiteColor,font=CTkFont(size = 14), checkbox_height=15, checkbox_width=15, checkmark_color=whiteColor,border_width= 2, corner_radius=5, border_color=whiteColor, hover_color=hover_color)
-    hidden_Check.grid(row=1, column=0, padx=5)
+    hidden_Check.grid(row=1, column=0, padx=5, sticky="w")
     
     def on_save():
         nonlocal item_created
@@ -221,7 +218,7 @@ def item_creator(root: Tk, callback) -> None:
     
     saveButton = CTkButton(window, text="Save", command=on_save, width = 100, height=40, fg_color=light_blue_color,
                             hover_color=dark_blue_color,text_color=dark_color_1, font=CTkFont(size = 24))
-    saveButton.grid(row=1, column=0, pady=20, padx=20)
+    saveButton.grid(row=1, column=0, pady=(0, 20))
 
     
     # Show the window
