@@ -19,7 +19,7 @@ class Controller:
         """Ajoute un nouvel objet"""
         def on_item_created(item, image_path):
             self.model.add_item(item, image_path)
-            self.view.update_list(self.model.get_items())
+            self.view.update_list(self.model.get_items(), [])
         
         item_creator(self.view.root, on_item_created)
 
@@ -30,7 +30,7 @@ class Controller:
                 "Delete this item ?", "Are you sure ?"
             ):
                 self.model.remove_item(index)
-                self.view.update_list(self.model.get_items())
+                self.view.update_list(self.model.get_items(), [])
     
     def on_item_selected(self, index):
         item = self.model.get_items()[index]
