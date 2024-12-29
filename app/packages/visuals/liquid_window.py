@@ -26,6 +26,7 @@ def liquid_creator(root: Tk, callback) -> None:
     hover_color = "#1f4676"
     dark_blue_color = "#2c63aa"
     whiteColor= '#eeeeee'
+
     
     #TODO: Optimize var gestion
     name = StringVar()
@@ -77,7 +78,8 @@ def liquid_creator(root: Tk, callback) -> None:
     window.title("Liquid Creator")
     window.resizable(False, False)
 
-    window.geometry(f"+700+100")
+    window.geometry(f"+150+10")
+    window.attributes('-topmost', True)
 
     icon_path = os.path.join(os.path.dirname(__file__), "..", "..", "icons", "main_ico.ico")
     icon_path = os.path.normpath(icon_path)

@@ -66,7 +66,9 @@ def item_creator(root: Tk, callback) -> None:
     window.title("Item Creator")
     window.resizable(False, False)
 
-    window.geometry(f"+700+100")
+    window.geometry(f"+500+10")
+    window.attributes('-topmost', True)
+
 
     icon_path = os.path.join(os.path.dirname(__file__), "..", "..", "icons", "main_ico.ico")
     icon_path = os.path.normpath(icon_path)
