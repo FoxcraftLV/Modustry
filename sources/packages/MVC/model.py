@@ -17,6 +17,14 @@ class Model:
         """Supprime un item"""
         if 0 <= index < len(item_list):
             del item_list[index]
+        #get item ids from id_list
+        item_id_list = []
+        for i, id in enumerate(id_list):
+            if(id['element'] == 'item'):
+                item_id_list.append((id_list,i))
+        #remove the id at the index of the item to delete
+        del id_list[item_id_list[index][1]]  
+  
     
     def get_items(self) -> list:
         """Retourne la liste des items."""
@@ -33,6 +41,18 @@ class Model:
         """Supprime un item"""
         if 0 <= index < len(liquid_list):
             del liquid_list[index]
+
+        #get liquid ids from id_list
+        liquid_id_list = []
+        for i, id in enumerate(id_list):
+            if(id['element'] == 'liquid'):
+                liquid_id_list.append((id_list,i))
+
+        #remove the id at the index of the liquid to delete
+        del id_list[liquid_id_list[index][1]]
+
+
+        
     
     def get_liquids(self) -> list:
         """Retourne la liste des items."""

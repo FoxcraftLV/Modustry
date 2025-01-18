@@ -15,6 +15,13 @@ from .global_func import choose_color
 from ..data.mindustry_class.unlockableContent import UnlockableContent
 from ..data.mindustry_class.Liquid import Liquid
 
+def limit_name_lenght(name):
+    limit = 30
+    value = name.get()
+    if len(value) > limit:
+        name.set(value[:limit])
+
+
 def liquid_creator(root: Tk, callback) -> None:
     ##### Variables #####
     liquid_created = False
@@ -72,6 +79,7 @@ def liquid_creator(root: Tk, callback) -> None:
     # Image loader
     picture_path = filedialog.askopenfilename(title="Select your sprite (48x48 recommended)", filetypes=[("Image files", "*.png;*.jpg;*.jpeg")])
     picture = ImageTk.PhotoImage(Image.open(picture_path).resize((256, 256), Image.NEAREST))
+    name.trace('w', lambda *args: limit_name_lenght(name))
     name.set(os.path.basename(picture_path).split(".")[0])
     
     # Window

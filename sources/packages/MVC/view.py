@@ -175,7 +175,7 @@ class View:
                 self.item_label_image_list.append(label_image)
                 self.item_images_list.append(item_img)  #just to remember the images else, they would be destroyed
 
-                label_text = tk.Label(self.item_scrollable_frame, text=f"{item.name} - {item}",  background=self.dark_color_1, fg=self.whiteColor,font=CTkFont(size = 24))
+                label_text = tk.Label(self.item_scrollable_frame, text=f"{item.name}",  background=self.dark_color_1, fg=self.whiteColor,font=CTkFont(size = 18))
                 label_text.grid(row=i, column=1, padx=10, pady=5)
                 self.item_texts_list.append(label_text)
 
@@ -208,7 +208,7 @@ class View:
                 self.liquids_label_image_list.append(label_image)
                 self.liquids_images_list.append(liquids_img)  #just to remember the images else, they would be destroyed
 
-                label_text = tk.Label(self.liquids_scrollable_frame, text=f"{liquid.name} - {liquid}",  background=self.dark_color_1, fg=self.whiteColor,font=CTkFont(size = 24))
+                label_text = tk.Label(self.liquids_scrollable_frame, text=f"{liquid.name}",  background=self.dark_color_1, fg=self.whiteColor,font=CTkFont(size = 18))
                 label_text.grid(row=i, column=1, padx=10, pady=5)
                 self.liquids_texts_list.append(label_text)
 
