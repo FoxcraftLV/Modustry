@@ -25,7 +25,7 @@ def save_file():
         print("Mod saved successfully!")
 
 # load method 
-def load_file(callback: Optional[callable] = None):
+def load_file(view):#callback: Optional[callable] = None):
     global already_packed
     file_path = filedialog.askopenfilename(filetypes=[("Mindustry Mod", "*.modtry"), ("Mindustry Mod", "*.minmod"), ("All Files", "*.*")])
     if file_path:
@@ -60,6 +60,20 @@ def load_file(callback: Optional[callable] = None):
         
     else:
         print("no file was chosen")
-    
-    callback() if callback else None
+    #callback() if callback else None
+
+    # add image paths in controller from id list
+    item_image_path = []
+    liquid_image_path = []
+    print(id_list)
+    for dic in id_list:
+        if(dic['element'] == "item"):
+            item_image_path.append(dic['image_path'])
+        else:
+            liquid_image_path.append(dic['image_path'])
+
+    view.controller.items_image_paths= item_image_path
+    view.controller.liquids_image_paths= liquid_image_path
+
+    view.update_list("all", item_list, liquid_list)
 

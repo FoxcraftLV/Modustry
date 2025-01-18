@@ -49,8 +49,7 @@ class View:
         # File menu 
         file_menu = tk.Menu(root_bar, tearoff=0,font=CTkFont(size = 16))
         file_menu.add_command(label="Save file", command=save_file)
-        file_menu.add_command(label="Load file", command=lambda: load_file(self.update_list("all",
-                                                                                                item_list, liquid_list)))
+        file_menu.add_command(label="Load file", command=lambda: load_file(self))
         file_menu.add_command(label="Pack", command=lambda: mod_window(root))
 
         # Adding menu

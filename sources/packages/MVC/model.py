@@ -11,7 +11,7 @@ class Model:
     def add_item(self, item: Item, image_path: str) -> None:
         """Ajoute un nouvel item"""
         item_list.append(item)
-        id_list.append({'name': item.name, 'item_id': item_list.index(item), 'image_path': image_path})
+        id_list.append({'name': item.name, 'item_id': item_list.index(item), 'image_path': image_path, 'element': "item"})
 
     def remove_item(self, index) -> None:
         """Supprime un item"""
@@ -27,7 +27,7 @@ class Model:
     def add_liquid(self, liquid: Liquid, image_path: str) -> None:
         """Ajoute un nouvel item"""
         liquid_list.append(liquid)
-        id_list.append({'name': liquid.name, 'item_id': liquid_list.index(liquid), 'image_path': image_path})
+        id_list.append({'name': liquid.name, 'item_id': liquid_list.index(liquid), 'image_path': image_path, 'element': "liquid"})
 
     def remove_liquid(self, index) -> None:
         """Supprime un item"""
