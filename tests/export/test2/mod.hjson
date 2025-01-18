@@ -1,0 +1,10 @@
+
+    {
+        'name': 'test2',
+        'displayName': 'Test 2',
+        'author': 'Aengus',
+        'description': '',
+        'minGameVersion': 146,
+        'hidden': false
+    }
+    

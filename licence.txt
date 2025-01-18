@@ -1,0 +1,23 @@
+Licence d'utilisation du logiciel
+
+Droit d'auteur (c) 2025 Aengus Sinanides & Terence 
+
+La permission est accordée, gratuitement, à toute personne obtenant une copie
+de ce logiciel et des fichiers de documentation associés (le "Logiciel"), de traiter
+dans le Logiciel sans restriction, y compris sans limitation les droits
+d'utiliser, copier, publier, distribuer, sous réserve des conditions suivantes :
+
+1. Le Logiciel doit être relié au nom des auteurs, Aengus Sinanides & .
+2. Le Logiciel ne peut pas être modifié de quelque manière que ce soit.
+3. Le Logiciel ne peut pas être utilisé à des fins commerciales.
+
+L'avis de droit d'auteur ci-dessus et cet avis de permission doivent être inclus dans tous
+les copies ou portions substantielles du Logiciel.
+
+LE LOGICIEL EST FOURNI "TEL QUEL", SANS GARANTIE D'AUCUNE SORTE, EXPRESSE OU
+IMPLICITE, Y COMPRIS MAIS SANS S'Y LIMITER LES GARANTIES DE QUALITÉ MARCHANDE,
+D'ADÉQUATION À UN USAGE PARTICULIER ET D'ABSENCE DE CONTREFAÇON. EN AUCUN CAS LES
+AUTEURS OU TITULAIRES DU DROIT D'AUTEUR NE SERONT RESPONSABLES DE TOUTE RÉCLAMATION, DOMMAGE OU AUTRE
+RESPONSABILITÉ, QUE CE SOIT DANS UNE ACTION DE CONTRAT, DÉLIT OU AUTRE, DÉCOULANT DE,
+HORS OU EN RELATION AVEC LE LOGICIEL OU L'UTILISATION OU D'AUTRES AFFAIRES DANS LE
+LOGICIEL.
