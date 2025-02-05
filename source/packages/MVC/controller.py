@@ -1,4 +1,5 @@
 from tkinter import messagebox
+
 from .model import Model
 from .view import View
 

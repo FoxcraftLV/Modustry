@@ -1,6 +1,8 @@
 # Modustry
 
-Modustry est un logiciel de création de mods pour le jeu Mindustry. Il permet aux utilisateurs de créer, gérer et exporter des mods personnalisés pour enrichir leur expérience de jeu. Grâce à une interface utilisateur intuitive, les utilisateurs peuvent facilement ajouter de nouveaux éléments tels que des items, des liquides, des blocs, et bien plus encore.
+Modustry est un logiciel de création de mods pour le jeu Mindustry.  
+Il permet aux utilisateurs de créer, gérer est exporter leurs mods personnalisés de façon intuitive pour enrichir leur expérience de jeu.  
+Grâce à une interface graphique intuitive (développée en anglais pour des soucis de public large a atteindre a la fin du développement), les utilisateurs peuvent incorporer de nouveaux éléments à leur mod tel que des ressources et des liquides (les autres éléments du jeu étant toujours en développement mais promettant une immense possibilité de customisation).
 
 ## Fonctionnalités
 
@@ -25,7 +27,7 @@ Modustry est un logiciel de création de mods pour le jeu Mindustry. Il permet a
 
 1. Lancez l'application :
     ```bash
-    python -m source\main.py
+    python source\main.py
     ```
 
 2. Utilisez l'interface utilisateur pour créer vos mods.
