@@ -7,6 +7,17 @@ from ..data.variables import *
 
 # Save method 
 def save_file():
+    """
+    Opens a file dialog to save the current state of various lists to a file with a specified extension.
+    The function prompts the user to select a file location and name using a save file dialog. 
+    It then serializes and writes the contents of several lists (`item_list`, `liquid_list`, `UC_list`, 
+    `already_packed`, and `id_list`) to the selected file in binary format.
+    The file is saved with a default extension of ".modtry", but the user can choose from other 
+    extensions such as ".minmod" or any other file type.
+    The function prints a success message upon completion.
+    Returns:
+        None
+    """
     file_path = filedialog.asksaveasfilename(defaultextension=".modtry", filetypes=[("Mindustry Mod", "*.modtry"), ("Mindustry Mod", "*.minmod"), ("All Files", "*.*")])
     if file_path:
         with open(file_path, "wb") as file:
@@ -26,7 +37,18 @@ def save_file():
 
 # load method 
 def load_file(view):#callback: Optional[callable] = None):
-    global already_packed
+    """
+    Loads a mod file and updates the view with the loaded data.
+    This function opens a file dialog to select a mod file with extensions .modtry, .minmod, or any file.
+    It then loads the contents of the file, which include lists of items, liquids, unlockable content, 
+    a boolean indicating if the mod is already packed, and a list of dictionaries containing IDs and image paths.
+    The loaded data is used to update global variables and the view's controller.
+    Args:
+        view: The view object that will be updated with the loaded data.
+    Returns:
+        None
+    """
+    global already_packed, item_list, liquid_list, UC_list, id_list
     file_path = filedialog.askopenfilename(filetypes=[("Mindustry Mod", "*.modtry"), ("Mindustry Mod", "*.minmod"), ("All Files", "*.*")])
     if file_path:
         with open(file_path, "rb") as file:
@@ -67,6 +89,7 @@ def load_file(view):#callback: Optional[callable] = None):
     liquid_image_path = []
     print(id_list)
     for dic in id_list:
+        print(dic)
         if(dic['element'] == "item"):
             item_image_path.append(dic['image_path'])
         else:

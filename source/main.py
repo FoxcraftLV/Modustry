@@ -11,22 +11,13 @@ from packages.data.variables import *
 from packages.MVC.controller import Controller
 
 def main():
+    """
+    The main function that initializes the application.
+    This function creates an instance of the CTk class, initializes the
+    Controller with the root window, and starts the main event loop.
+    """
     root = CTk()
     app = Controller(root)
-    
-    try:
-        current_dir = os.path.dirname(__file__)
-        parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
-        parent_dir = os.path.abspath(os.path.join(parent_dir, os.pardir))
-        icon_path = os.path.join(parent_dir, "icons\\main_ico.ico")
-        if not os.path.isfile(icon_path):
-            raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
-    except Exception:
-        user = os.getlogin()
-        icon_path = f"C:\\Users\\{user}\\AppData\\Roaming\\Modustry\\data\\icons\\main_icon.ico"
-        #self.root.iconbitmap(default=icon_path)
-    
-    root.after(250, lambda: root.iconbitmap(icon_path))
 
     root.mainloop()
 

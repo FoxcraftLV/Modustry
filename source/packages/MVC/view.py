@@ -11,7 +11,51 @@ from customtkinter import *
 from PIL import Image, ImageTk
 
 class View:
-    """Interface utilisateur pour l'affichage et l'interaction"""
+    """
+    A class used to represent the View in the MVC architecture for the Modustry application.
+    Attributes
+    ----------
+    root : CTk
+        The root window of the application.
+    controller : Controller
+        The controller that handles the logic of the application.
+    dark_color_1 : str
+        A string representing the first dark color used in the UI.
+    dark_color_2 : str
+        A string representing the second dark color used in the UI.
+    gray_color_1 : str
+        A string representing the first gray color used in the UI.
+    gray_color_2 : str
+        A string representing the second gray color used in the UI.
+    light_blue_color : str
+        A string representing the light blue color used in the UI.
+    dark_blue_color : str
+        A string representing the dark blue color used in the UI.
+    whiteColor : str
+        A string representing the white color used in the UI.
+    main_frame : CTkFrame
+        The main frame of the application.
+    items_frame : CTkFrame
+        The frame that contains the list of items.
+    liquids_frame : CTkFrame
+        The frame that contains the list of liquids.
+    item_bin_buttons_list : list
+        A list of buttons for deleting items.
+    item_label_image_list : list
+        A list of labels for item images.
+    item_texts_list : list
+        A list of labels for item texts.
+    liquids_bin_buttons_list : list
+        A list of buttons for deleting liquids.
+    liquids_label_image_list : list
+        A list of labels for liquid images.
+    liquids_texts_list : list
+        A list of labels for liquid texts.
+    Methods
+    -------
+    update_list(element, items, liquids)
+        Updates the list of items or liquids in the UI.
+    """
     def __init__(self, root: CTk, controller):
         self.root = root
         self.controller = controller
@@ -38,8 +82,7 @@ class View:
                 raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
         except Exception:
             user = os.getlogin()
-            icon_path = f"C:\\Users\\{user}\\AppData\\Roaming\\Modustry\\data\\icons\\main_icon.ico"
-        #self.root.iconbitmap(default=icon_path)
+            icon_path = f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Modustry\\main_icon.ico"
         self.root.after(250, lambda: self.root.iconbitmap(icon_path))
 
 
@@ -150,7 +193,6 @@ class View:
     
 
     def update_list(self, element, items, liquids):
-        """Met à jour les liste"""
         print(element,items,liquids)
 
         if element == "item":

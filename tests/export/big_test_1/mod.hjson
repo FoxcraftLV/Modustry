@@ -1,0 +1,10 @@
+
+    {
+        'name': 'big-test-1',
+        'displayName': 'Big Test 1',
+        'author': 'Aengus',
+        'description': 'sdqdsfs',
+        'minGameVersion': 146,
+        'hidden': false
+    }
+    

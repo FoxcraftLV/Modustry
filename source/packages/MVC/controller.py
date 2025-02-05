@@ -9,7 +9,27 @@ from ..data.variables import *
 
 
 class Controller:
-    """Gère les interactions entre le modèle et la vue"""
+    """
+    The Controller class is responsible for managing the interaction between the Model and the View.
+    It handles user inputs and updates the View accordingly.
+    Attributes:
+        model (Model): The model instance that holds the data.
+        view (View): The view instance that displays the data.
+        selected_item (Item): The currently selected item.
+        items_image_paths (list): A list of image paths for items.
+        liquids_image_paths (list): A list of image paths for liquids.
+    Methods:
+        add_item():
+            Adds a new item to the model and updates the view.
+        delete_item(index):
+            Deletes an item from the model and updates the view.
+        on_item_selected(index):
+            Handles the selection of an item and updates the selected_item attribute.
+        add_liquid():
+            Adds a new liquid to the model and updates the view.
+        delete_liquid(index):
+            Deletes a liquid from the model and updates the view.
+    """
     def __init__(self, root):
         self.model = Model()
         self.view = View(root, self)
@@ -21,7 +41,6 @@ class Controller:
     
     ##### Item gestion #####
     def add_item(self):
-        """Ajoute un nouvel objet"""
         def on_item_created(item, image_path):
             self.items_image_paths.append(image_path)
             self.model.add_item(item, image_path)
@@ -45,7 +64,6 @@ class Controller:
     
     ##### Liquid gestion #####
     def add_liquid(self):
-        """Ajoute un nouvel objet"""
         def on_liquid_created(liquid, image_path):
             self.liquids_image_paths.append(image_path)
             self.model.add_liquid(liquid, image_path)

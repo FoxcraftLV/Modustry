@@ -31,11 +31,19 @@ def mod_window(root):
 
     window.attributes('-topmost', True)
     
-    icon_path = os.path.join(os.path.dirname(__file__), "..", "..", "icons", "main_ico.ico")
-    icon_path = os.path.normpath(icon_path)
+    # icon_path = os.path.join(os.path.dirname(__file__), "..", "..", "icons", "main_ico.ico")
+    # icon_path = os.path.normpath(icon_path)
     
-    #window.iconbitmap(icon_path)
-
+    try:
+        current_dir = os.path.dirname(__file__)
+        parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+        parent_dir = os.path.abspath(os.path.join(parent_dir, os.pardir))
+        icon_path = os.path.join(parent_dir, "icons\\main_ico.ico")
+        if not os.path.isfile(icon_path):
+            raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
+    except Exception:
+        user = os.getlogin()
+        icon_path = f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Modustry\\main_icon.ico"
     window.after(250, lambda: window.iconbitmap(icon_path))
     
     name = StringVar()
@@ -95,7 +103,7 @@ def mod_window(root):
     progress.pack(pady=20)
     
     # Create Mod Button
-    create_button = CTkButton(window, text='Create the mod', command=lambda: pack_all(window, name, displayName, author, description_Text.get("1.0", "end-1c"), minGameVersion, hidden, progress))
+    create_button = CTkButton(window, text='Create the mod', command=lambda: pack_all(window, name.get(), displayName.get(), author.get(), description_Text.get("1.0", "end-1c"), minGameVersion.get(), hidden.get(), progress))
     create_button.pack(side='top', pady=20)
     
     window.lift()
@@ -178,7 +186,7 @@ def pack_all(root, name, displayName, author, description, minGameVersion, hidde
     print("Mod created successfully!")
     
     progress.destroy()
-    root.after(3000, root.destroy)
+    root.after(1000, root.destroy)
 
 
 # creation of fhe mod structure for export

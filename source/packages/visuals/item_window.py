@@ -15,12 +15,49 @@ from ..data.mindustry_class.unlockableContent import UnlockableContent
 from ..data.mindustry_class.Item import Item
 
 def limit_name_lenght(name):
+    """
+    Limits the length of the input string to a specified maximum length.
+
+    Args:
+        name (tkinter.StringVar): A Tkinter StringVar object containing the string to be limited.
+
+    The function truncates the string to a maximum of 30 characters if it exceeds this length.
+    """
     limit = 30
     value = name.get()
     if len(value) > limit:
         name.set(value[:limit])
 
 def item_creator(root: Tk, callback) -> None:
+    """
+    Creates a new item using a graphical user interface (GUI) for input.
+    This function opens a window where the user can input various properties for an item,
+    such as name, color, explosiveness, flammability, radioactivity, charge, hardness, cost,
+    health scaling, and other attributes. The user can also select an image for the item.
+    Args:
+        root (Tk): The root Tkinter window.
+        callback (function): A callback function to be called with the created item and image path.
+        hardness (tkinter.IntVar): The hardness value of the item.
+        lowPriority (tkinter.StringVar): Whether the item has low priority.
+        buildable (tkinter.StringVar): Whether the item is buildable.
+        hidden (tkinter.StringVar): Whether the item is hidden.
+        hiddenOnPlanets (list): A list of planets where the item is hidden.
+        description (tkinter.StringVar): The description of the item.
+        alwaysUnlocked (tkinter.StringVar): Whether the item is always unlocked.
+        inlineDescription (tkinter.StringVar): Whether the item has an inline description.
+        hideDetails (tkinter.StringVar): Whether to hide details of the item.
+        generateIcons (tkinter.StringVar): Whether to generate icons for the item.
+        iconId (tkinter.IntVar): The icon ID of the item.
+        selectionSize (tkinter.DoubleVar): The selection size of the item.
+        fullOverride (tkinter.StringVar): Whether the item has a full override.
+        picture_path (str): The file path of the selected image.
+        picture (ImageTk.PhotoImage): The loaded image for the item.
+    Methods:
+        on_save(): Handles the save action for creating an item. Creates an `Item` object with
+                   the provided attributes and calls the callback function with the created item
+                   and image path.
+    """
+    
     ##### Variables #####
     item_created = False
 
@@ -78,11 +115,19 @@ def item_creator(root: Tk, callback) -> None:
     window.attributes('-topmost', True)
 
 
-    icon_path = os.path.join(os.path.dirname(__file__), "..", "..", "icons", "main_ico.ico")
-    icon_path = os.path.normpath(icon_path)
+    # icon_path = os.path.join(os.path.dirname(__file__), "..", "..", "icons", "main_ico.ico")
+    # icon_path = os.path.normpath(icon_path)
     
-    #window.iconbitmap(icon_path)
-
+    try:
+        current_dir = os.path.dirname(__file__)
+        parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+        parent_dir = os.path.abspath(os.path.join(parent_dir, os.pardir))
+        icon_path = os.path.join(parent_dir, "icons\\main_ico.ico")
+        if not os.path.isfile(icon_path):
+            raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
+    except Exception:
+        user = os.getlogin()
+        icon_path = f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Modustry\\main_icon.ico"
     window.after(250, lambda: window.iconbitmap(icon_path))
     
     # Label frames
@@ -189,6 +234,49 @@ def item_creator(root: Tk, callback) -> None:
     hidden_Check.grid(row=1, column=0, padx=5, sticky="w")
     
     def on_save():
+        """
+        Handles the save action for creating an item.
+
+        This function creates an `Item` object with various attributes obtained from
+        the user input fields if the item has not been created yet. It then sets the
+        `item_created` flag to True, stores the image path, destroys the window, and
+        calls the provided callback function with the created item and image path.
+
+        Attributes:
+            item_created (bool): A flag indicating whether the item has been created.
+            name (tkinter.StringVar): The name of the item.
+            color (tkinter.StringVar): The color of the item in hexadecimal format.
+            explosiveness (tkinter.DoubleVar): The explosiveness value of the item.
+            flammability (tkinter.DoubleVar): The flammability value of the item.
+            radioactivity (tkinter.DoubleVar): The radioactivity value of the item.
+            charge (tkinter.DoubleVar): The charge value of the item.
+            hardness (tkinter.DoubleVar): The hardness value of the item.
+            cost (tkinter.DoubleVar): The cost value of the item.
+            healthScaling (tkinter.DoubleVar): The health scaling value of the item.
+            lowPriority (tkinter.BooleanVar): Whether the item has low priority.
+            frames (tkinter.IntVar): The number of frames for the item.
+            transitionFrames (tkinter.IntVar): The number of transition frames for the item.
+            frameTime (tkinter.DoubleVar): The frame time for the item.
+            buildable (tkinter.BooleanVar): Whether the item is buildable.
+            hidden (tkinter.BooleanVar): Whether the item is hidden.
+            hiddenOnPlanets (bool): Whether the item is hidden on planets.
+            localizedName (tkinter.StringVar): The localized name of the item.
+            description_Text (tkinter.Text): The description text of the item.
+            details (tkinter.StringVar): The details of the item.
+            alwaysUnlocked (tkinter.BooleanVar): Whether the item is always unlocked.
+            inlineDescription (tkinter.BooleanVar): Whether the item has an inline description.
+            hideDetails (tkinter.BooleanVar): Whether to hide details of the item.
+            generateIcons (tkinter.BooleanVar): Whether to generate icons for the item.
+            iconId (tkinter.StringVar): The icon ID of the item.
+            selectionSize (tkinter.IntVar): The selection size of the item.
+            fullOverride (tkinter.BooleanVar): Whether the item has a full override.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+        """
         nonlocal item_created
         if not item_created:
             item = Item(
@@ -235,6 +323,13 @@ def item_creator(root: Tk, callback) -> None:
     window.pack_propagate()
 
 def create_hjson_item_file(item: Item):
+    """
+    Creates an HJSON representation of an item.
+    Args:
+        item (Item): The item object containing various attributes.
+    Returns:
+        str: A string containing the HJSON representation of the item.
+    """
     if item.fullOverride == "":
         item.fullOverride = "true"
     print(item.frameTime)

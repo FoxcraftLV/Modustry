@@ -16,6 +16,15 @@ from ..data.mindustry_class.unlockableContent import UnlockableContent
 from ..data.mindustry_class.Liquid import Liquid
 
 def limit_name_lenght(name):
+    """
+    Trims the input string to a maximum length of 30 characters.
+
+    Parameters:
+    name (tkinter.StringVar): A Tkinter StringVar object containing the string to be trimmed.
+
+    Returns:
+    None
+    """
     limit = 30
     value = name.get()
     if len(value) > limit:
@@ -23,6 +32,103 @@ def limit_name_lenght(name):
 
 
 def liquid_creator(root: Tk, callback) -> None:
+    """
+    Creates a GUI window for configuring and creating a liquid object with various properties.
+    Args:
+        root (Tk): The root Tkinter window.
+        callback (function): A callback function to be called with the created liquid object and image path.
+    Variables:
+        liquid_created (bool): Flag to check if the liquid has been created.
+        dark_color_1 (str): Dark color for UI elements.
+        gray_color_1 (str): Gray color for UI elements.
+        light_blue_color (str): Light blue color for UI elements.
+        hover_color (str): Hover color for UI elements.
+        dark_blue_color (str): Dark blue color for UI elements.
+        whiteColor (str): White color for UI elements.
+        name (StringVar): Variable to store the name of the liquid.
+        color (StringVar): Variable to store the color of the liquid.
+        gasColor (StringVar): Variable to store the gas color of the liquid.
+        barColor (StringVar): Variable to store the bar color of the liquid.
+        lightColor (StringVar): Variable to store the light color of the liquid.
+        flammability (DoubleVar): Variable to store the flammability of the liquid.
+        explosiveness (DoubleVar): Variable to store the explosiveness of the liquid.
+        hidden (StringVar): Variable to store if the liquid is hidden.
+        canStayOn (list): List to store the blocks the liquid can stay on.
+        blockReactive (StringVar): Variable to store if the liquid is block reactive.
+        coolant (StringVar): Variable to store if the liquid is a coolant.
+        moveThroughBlocks (StringVar): Variable to store if the liquid can move through blocks.
+        incinerate (StringVar): Variable to store if the liquid can incinerate.
+        effect (StringVar): Variable to store the effect of the liquid.
+        particleEffect (StringVar): Variable to store the particle effect of the liquid.
+        particleSpacing (DoubleVar): Variable to store the particle spacing of the liquid.
+        boilPoint (DoubleVar): Variable to store the boil point of the liquid.
+        capPuddles (StringVar): Variable to store if the liquid can cap puddles.
+        vaporEffect (StringVar): Variable to store the vapor effect of the liquid.
+        temperature (DoubleVar): Variable to store the temperature of the liquid.
+        heatCapacity (DoubleVar): Variable to store the heat capacity of the liquid.
+        viscosity (DoubleVar): Variable to store the viscosity of the liquid.
+        animationFrames (IntVar): Variable to store the animation frames of the liquid.
+        animationScaleGas (DoubleVar): Variable to store the animation scale for gas of the liquid.
+        animationScaleLiquid (DoubleVar): Variable to store the animation scale for liquid of the liquid.
+        gas (StringVar): Variable to store if the liquid is a gas.
+        localizedName (StringVar): Variable to store the localized name of the liquid.
+        description (StringVar): Variable to store the description of the liquid.
+        details (StringVar): Variable to store the details of the liquid.
+        alwaysUnlocked (StringVar): Variable to store if the liquid is always unlocked.
+        inlineDescription (StringVar): Variable to store if the liquid has an inline description.
+        hideDetails (StringVar): Variable to store if the details of the liquid are hidden.
+        generateIcons (StringVar): Variable to store if the liquid generates icons.
+        iconId (IntVar): Variable to store the icon ID of the liquid.
+        selectionSize (DoubleVar): Variable to store the selection size of the liquid.
+        fullOverride (StringVar): Variable to store the full override of the liquid.
+        picture_path (str): Path to the picture of the liquid.
+        picture (ImageTk.PhotoImage): Image of the liquid.
+        window (CTkToplevel): The main window for the liquid creator.
+        UC_box (LabelFrame): Label frame for global properties.
+        liquid_box (LabelFrame): Label frame for liquid properties.
+        picture_box (Label): Label to display the picture of the liquid.
+        name_box (LabelFrame): Label frame for the name input.
+        name_Label (Label): Label for the name input.
+        name_Entry (Entry): Entry for the name input.
+        description_box (LabelFrame): Label frame for the description input.
+        description_Label (Label): Label for the description input.
+        description_Text (Text): Text widget for the description input.
+        localizedName_box (LabelFrame): Label frame for the localized name input.
+        localizedName_Label (Label): Label for the localized name input.
+        localizedName_Entry (Entry): Entry for the localized name input.
+        alwaysUnlocked_Check (CTkCheckBox): Checkbox for always unlocked option.
+        inlineDescription_Check (CTkCheckBox): Checkbox for inline description option.
+        hideDetails_Check (CTkCheckBox): Checkbox for hide details option.
+        generateIcons_Check (CTkCheckBox): Checkbox for generate icons option.
+        selectionSize_Scale (Scale): Scale for selection size.
+        button_Frame (LabelFrame): Frame for color buttons.
+        color_Button (CTkButton): Button to choose the color.
+        gasColor_Button (CTkButton): Button to choose the gas color.
+        barColor_Button (CTkButton): Button to choose the bar color.
+        lightColor_Button (CTkButton): Button to choose the light color.
+        scale_box (LabelFrame): Frame for scales.
+        flammability_Scale (Scale): Scale for flammability.
+        temperature_Scale (Scale): Scale for temperature.
+        heatCapacity_Scale (Scale): Scale for heat capacity.
+        viscosity_Scale (Scale): Scale for viscosity.
+        explosiveness_Scale (Scale): Scale for explosiveness.
+        particleSpacing_Scale (Scale): Scale for particle spacing.
+        boilPoint_Scale (Scale): Scale for boil point.
+        animationFrames_Scale (Scale): Scale for animation frames.
+        animationScaleGas_Scale (Scale): Scale for animation scale gas.
+        animationScaleLiquid_Scale (Scale): Scale for animation scale liquid.
+        check_box (LabelFrame): Frame for checkboxes.
+        hidden_Check (CTkCheckBox): Checkbox for hidden option.
+        blockReactive_Check (CTkCheckBox): Checkbox for block reactive option.
+        coolant_Check (CTkCheckBox): Checkbox for coolant option.
+        moveThroughBlocks_Check (CTkCheckBox): Checkbox for move through blocks option.
+        incinerate_Check (CTkCheckBox): Checkbox for incinerate option.
+        capPuddles_Check (CTkCheckBox): Checkbox for cap puddles option.
+        gas_Check (CTkCheckBox): Checkbox for gas option.
+        saveButton (CTkButton): Button to save the liquid.
+    Functions:
+        on_save(): Callback function to save the liquid object and call the provided callback with the liquid and image path.
+    """
     ##### Variables #####
     liquid_created = False
 
@@ -90,11 +196,19 @@ def liquid_creator(root: Tk, callback) -> None:
     window.geometry(f"+150+10")
     window.attributes('-topmost', True)
 
-    icon_path = os.path.join(os.path.dirname(__file__), "..", "..", "icons", "main_ico.ico")
-    icon_path = os.path.normpath(icon_path)
-
-    #window.iconbitmap(icon_path)
-
+    # icon_path = os.path.join(os.path.dirname(__file__), "..", "..", "icons", "main_ico.ico")
+    # icon_path = os.path.normpath(icon_path)
+    
+    try:
+        current_dir = os.path.dirname(__file__)
+        parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+        parent_dir = os.path.abspath(os.path.join(parent_dir, os.pardir))
+        icon_path = os.path.join(parent_dir, "icons\\main_ico.ico")
+        if not os.path.isfile(icon_path):
+            raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
+    except Exception:
+        user = os.getlogin()
+        icon_path = f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Modustry\\main_icon.ico"
     window.after(250, lambda: window.iconbitmap(icon_path))
     
     # Label frames
@@ -235,6 +349,57 @@ def liquid_creator(root: Tk, callback) -> None:
     gas_Check.pack(side=TOP,padx=10, anchor="w")
     
     def on_save():
+        """
+        Handles the save action for creating a new Liquid object with the provided attributes.
+        
+        This function checks if a liquid has already been created. If not, it creates a new Liquid 
+        object using the values from various input fields, sets the image path, marks the liquid 
+        as created, destroys the window, and calls the callback function with the new liquid and 
+        image path.
+
+        Attributes:
+            liquid_created (bool): A flag indicating whether the liquid has already been created.
+            name (tk.StringVar): The name of the liquid.
+            localizedName (tk.StringVar): The localized name of the liquid.
+            description (tk.StringVar): The description of the liquid.
+            details (tk.StringVar): Additional details about the liquid.
+            alwaysUnlocked (tk.BooleanVar): Whether the liquid is always unlocked.
+            inlineDescription (tk.BooleanVar): Whether the liquid has an inline description.
+            hideDetails (tk.BooleanVar): Whether to hide details of the liquid.
+            generateIcons (tk.BooleanVar): Whether to generate icons for the liquid.
+            iconId (tk.StringVar): The icon ID for the liquid.
+            selectionSize (tk.IntVar): The selection size for the liquid.
+            fullOverride (tk.BooleanVar): Whether to fully override existing properties.
+            picture_path (str): The file path to the liquid's picture.
+            color (tk.StringVar): The color of the liquid.
+            gasColor (tk.StringVar): The color of the gas form of the liquid.
+            barColor (tk.StringVar): The color of the liquid's bar representation.
+            lightColor (tk.StringVar): The color of the liquid's light representation.
+            flammability (tk.DoubleVar): The flammability of the liquid.
+            explosiveness (tk.DoubleVar): The explosiveness of the liquid.
+            hidden (tk.BooleanVar): Whether the liquid is hidden.
+            canStayOn (bool): Whether the liquid can stay on blocks.
+            blockReactive (tk.BooleanVar): Whether the liquid is reactive with blocks.
+            coolant (tk.BooleanVar): Whether the liquid can be used as a coolant.
+            moveThroughBlocks (tk.BooleanVar): Whether the liquid can move through blocks.
+            incinerate (tk.BooleanVar): Whether the liquid can incinerate.
+            effect (tk.StringVar): The effect of the liquid.
+            particleEffect (tk.StringVar): The particle effect of the liquid.
+            particleSpacing (tk.DoubleVar): The spacing of particles in the liquid.
+            boilPoint (tk.DoubleVar): The boiling point of the liquid.
+            capPuddles (tk.BooleanVar): Whether to cap puddles of the liquid.
+            vaporEffect (tk.StringVar): The vapor effect of the liquid.
+            temperature (tk.DoubleVar): The temperature of the liquid.
+            heatCapacity (tk.DoubleVar): The heat capacity of the liquid.
+            viscosity (tk.DoubleVar): The viscosity of the liquid.
+            animationFrames (tk.IntVar): The number of animation frames for the liquid.
+            animationScaleGas (tk.DoubleVar): The animation scale for the gas form of the liquid.
+            animationScaleLiquid (tk.DoubleVar): The animation scale for the liquid form.
+            gas (tk.BooleanVar): Whether the liquid is in gas form.
+
+        Returns:
+            None
+        """
         nonlocal liquid_created
         if not liquid_created:
             liquid = Liquid(
@@ -292,6 +457,13 @@ def liquid_creator(root: Tk, callback) -> None:
     window.pack_propagate()
 
 def create_hjson_liquid_file(liquid: Liquid):
+    """
+    Generates an HJSON representation of a Liquid object.
+    Args:
+        liquid (Liquid): The Liquid object containing various properties.
+    Returns:
+        str: A string containing the HJSON representation of the Liquid object.
+    """
     if liquid.fullOverride == "":
         liquid.fullOverride = "true"
 
@@ -312,7 +484,7 @@ def create_hjson_liquid_file(liquid: Liquid):
         color: {liquid.color[1:]},
         gasColor: {liquid.gasColor[1:]},
         barColor: {liquid.barColor[1:]},
-        lightColor: {liquid.lightColor[1:]},
+        lightColor: {liquid.lightColor[1:]+"ff"},
         flammability: {liquid.flammability},
         explosiveness: {liquid.explosiveness},
         hidden: {liquid.hidden},

@@ -3,7 +3,7 @@
 block_cipher = None
 
 a = Analysis(
-    ['source/main.py'],
+    ['../source/main.py'],
     pathex=[],
     binaries=[],
     datas=[],
@@ -36,5 +36,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['source/icons/main_ico.ico'],
+    icon=['../source/icons/main_ico.ico'],
 )
