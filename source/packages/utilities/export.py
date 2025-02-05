@@ -43,7 +43,7 @@ def mod_window(root):
             raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
     except Exception:
         user = os.getlogin()
-        icon_path = f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Modustry\\main_icon.ico"
+        icon_path = f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Modustry\\main_ico.ico"
     window.after(250, lambda: window.iconbitmap(icon_path))
     
     name = StringVar()

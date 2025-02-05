@@ -82,7 +82,7 @@ class View:
                 raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
         except Exception:
             user = os.getlogin()
-            icon_path = f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Modustry\\main_icon.ico"
+            icon_path = f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Modustry\\main_ico.ico"
         self.root.after(250, lambda: self.root.iconbitmap(icon_path))
 
 
@@ -193,7 +193,6 @@ class View:
     
 
     def update_list(self, element, items, liquids):
-        print(element,items,liquids)
 
         if element == "item":
             #reset lists

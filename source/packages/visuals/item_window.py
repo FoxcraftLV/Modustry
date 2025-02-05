@@ -127,7 +127,7 @@ def item_creator(root: Tk, callback) -> None:
             raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
     except Exception:
         user = os.getlogin()
-        icon_path = f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Modustry\\main_icon.ico"
+        icon_path = f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Modustry\\main_ico.ico"
     window.after(250, lambda: window.iconbitmap(icon_path))
     
     # Label frames
@@ -332,7 +332,6 @@ def create_hjson_item_file(item: Item):
     """
     if item.fullOverride == "":
         item.fullOverride = "true"
-    print(item.frameTime)
 
     hjson = f"""
     {{

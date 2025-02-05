@@ -37,4 +37,8 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     icon=['../source/icons/main_ico.ico'],
+    distpath='dist/',
+    workpath='build/'
+
+
 )

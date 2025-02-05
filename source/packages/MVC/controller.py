@@ -60,7 +60,6 @@ class Controller:
     def on_item_selected(self, index):
         item = self.model.get_items()[index]
         self.selected_item = item
-        print(f"selected Item: {item.name} - {item}")
     
     ##### Liquid gestion #####
     def add_liquid(self):

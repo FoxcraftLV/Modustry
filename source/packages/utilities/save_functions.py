@@ -61,22 +61,17 @@ def load_file(view):#callback: Optional[callable] = None):
         
         item_list.clear()
         item_list.extend(loaded_item_list)
-        print(item_list)
         
         liquid_list.clear()
         liquid_list.extend(loaded_liquid_list)
-        print(liquid_list)
         
         UC_list.clear()
         UC_list.extend(loaded_UC_list)
-        print(UC_list)
         
         already_packed = loaded_already_packed
-        print(already_packed)
         
         id_list.clear()
         id_list.extend(loaded_id_list)
-        print(id_list)
         
         print("Mod loaded successfully!")
         
@@ -87,9 +82,7 @@ def load_file(view):#callback: Optional[callable] = None):
     # add image paths in controller from id list
     item_image_path = []
     liquid_image_path = []
-    print(id_list)
     for dic in id_list:
-        print(dic)
         if(dic['element'] == "item"):
             item_image_path.append(dic['image_path'])
         else:
