@@ -12,7 +12,8 @@ PrivilegesRequired=lowest
 
 [Files]
 Source: "D:\programmation\Github\Modustry\package\dist\Modustry.exe"; DestDir: "{localappdata}\Programs\Modustry"; Flags: ignoreversion
-Source: "D:\programmation\Github\Modustry\source\icons\main_ico.ico"; DestDir: "{localappdata}\Programs\Modustry"; Flags: ignoreversion
+Source: "D:\programmation\Github\Modustry\source\icons\main_ico.ico"; DestDir: "{localappdata}\Programs\Modustry\icons"; Flags: ignoreversion
+Source: "D:\programmation\Github\Modustry\source\icons\bin_icon.png"; DestDir: "{localappdata}\Programs\Modustry\icons"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\Modustry"; Filename: "{app}\Modustry.exe"
