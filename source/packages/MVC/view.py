@@ -82,7 +82,7 @@ class View:
                 raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
         except Exception:
             user = os.getlogin()
-            icon_path = f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Modustry\\main_ico.ico"
+            icon_path = f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Modustry\\icons\\main_ico.ico"
         self.root.after(250, lambda: self.root.iconbitmap(icon_path))
 
 
@@ -193,6 +193,16 @@ class View:
     
 
     def update_list(self, element, items, liquids):
+        try:
+            current_dir = os.path.dirname(__file__)
+            parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+            parent_dir = os.path.abspath(os.path.join(parent_dir, os.pardir))
+            icon_path = os.path.join(parent_dir, "icons\\bin_icon.png")
+            if not os.path.isfile(icon_path):
+                raise FileNotFoundError("Le fichier à l'emplacement {icon_path} n'existe pas.")
+        except Exception:
+            user = os.getlogin()
+            icon_path = f"C:\\Users\\{user}\\AppData\\Local\\Programs\\Modustry\\icons\\bin_icon.png"
 
         if element == "item":
             #reset lists
@@ -219,9 +229,9 @@ class View:
                 label_text = tk.Label(self.item_scrollable_frame, text=f"{item.name}",  background=self.dark_color_1, fg=self.whiteColor,font=CTkFont(size = 18))
                 label_text.grid(row=i, column=1, padx=10, pady=5)
                 self.item_texts_list.append(label_text)
-
+                
                 item_bin_button = CTkButton(self.item_scrollable_frame, command=lambda index=i: self.controller.delete_item(index),
-                            width= 20, height=20, image=CTkImage(Image.open(os.path.join(os.path.dirname(__file__), "..", "..", "icons", "bin_icon.png")), size=(30,30)),
+                            width= 20, height=20, image=CTkImage(Image.open(icon_path), size=(30,30)),
                             bg_color=self.dark_color_1,fg_color=self.light_blue_color, text="",
                             hover_color=self.dark_blue_color)
                 item_bin_button.grid(row=i, column=2,pady=5, padx = (5,0))
@@ -254,7 +264,7 @@ class View:
                 self.liquids_texts_list.append(label_text)
 
                 liquids_bin_button = CTkButton(self.liquids_scrollable_frame, command=lambda index=i: self.controller.delete_liquid(index),
-                            width= 20, height=20, image=CTkImage(Image.open(os.path.join(os.path.dirname(__file__), "..", "..", "icons", "bin_icon.png")), size=(30,30)),
+                            width= 20, height=20, image=CTkImage(Image.open(icon_path), size=(30,30)),
                             bg_color=self.dark_color_1,fg_color=self.light_blue_color, text="",
                             hover_color=self.dark_blue_color)
                 liquids_bin_button.grid(row=i, column=2,pady=5, padx = (5,0))
