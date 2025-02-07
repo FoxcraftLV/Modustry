@@ -1,0 +1,10 @@
+
+    {
+        'name': 'example',
+        'displayName': 'Example Mod',
+        'author': 'Aengus',
+        'description': 'An example for the NSI project',
+        'minGameVersion': 146,
+        'hidden': false
+    }
+    

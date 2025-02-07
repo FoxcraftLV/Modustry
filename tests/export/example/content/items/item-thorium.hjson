@@ -1,0 +1,31 @@
+
+    {
+        type: Item,
+        name: 'item-thorium',
+        localizedName: 'Thorium',
+        description: 'Un objet dangereux',
+        detail: '',
+        alwaysUnlocked: false,
+        inlineDescription: true,
+        hideDetails: true,
+        generateIcons: true,
+        iconId: 0,
+        selectionSize: 24.0,
+        fullOverride: true,
+        color: 'ffa8da',
+        explosiveness: 5.0,
+        flammability: 1.8,
+        radioactivity: 1.5,
+        charge: 10.0,
+        hardness: 2,
+        cost: 5.0,
+        healthScaling: 5.0,
+        lowPriority: false,
+        frames: 0,
+        transitionFrames: 0,
+        frameTime: 5.0,
+        buildable: true,
+        hidden: false,
+        hiddenOnPlanets: []
+    }
+    
